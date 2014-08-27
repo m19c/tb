@@ -1,0 +1,11 @@
+{
+    "name": "config-tree-builder",
+    "version": "0.0.1",
+    "dependencies": {
+        "underscore": "1.7.0"
+    },
+    "devDependencies": {
+        "mocha": "1.21.4",
+        "chai": "1.9.1"
+    }
+}

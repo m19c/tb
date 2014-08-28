@@ -5,6 +5,38 @@
 
 The `config-tree-builder` allows the developer to specialize a configuration fast and without problems through an easy API.
 
+```javascript
+var builder    = require('./index'),
+    definition = builder('package'),
+    result;
+
+definition
+    .children()
+        .stringNode('name').isRequired().end()
+        .objectNode('developer')
+            .children()
+                .stringNode('name').isRequired().end()
+                .stringNode('email').isRequired().end()
+                .numberNode('age')
+                    .isGreaterOrEqualThan(18)
+                .end()
+            .end()
+        .end()
+    .end();
+
+try {
+    result = definition.deploy({
+        name: 'Pentakill Package',
+        developer: {
+            name: 'Jon Doe',
+            email: 'jon@doe.com'
+        }
+    });
+} catch (error) {
+    console.error(error.path + ': ' + error.message);
+}
+```
+
 ## The API
 ### `mixedNode(key)`
 #### `isRequired()`

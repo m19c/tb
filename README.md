@@ -75,6 +75,8 @@ try {
 #### validate
 #### isGreaterThan
 #### isLowerThan
+#### isGreaterOrEqualThan
+#### isLowerOrEqualThan
 #### isEqualTo
 #### min
 #### max

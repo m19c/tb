@@ -8,10 +8,12 @@ var builder = require('config-tree-builder'),
 definition = builder.define();
 
 definition
-    .node('db', 'object')
-        .node('host', 'string').defaultValue('127.0.0.1').end()
-        .node('user', 'string').isRequired().end()
-        .node('pass', 'string').isRequired().end()
+    .objectNode('db')
+        .stringNode('host')
+            .defaultValue('127.0.0.1')
+        .end()
+        .stringNode('user').isRequired().end()
+        .stringNode('pass').isRequired().end()
     .end();
 
 definition.process({ /* my config */ });
@@ -23,3 +25,31 @@ definition.process({ /* my config */ });
 - Complete the implementation of `tree.js`
 - Write some tests
 - Create the first release
+
+
+## API
+### global
+#### isRequired
+
+### object
+
+### array
+#### validate
+#### hasKey
+#### lengthOf
+#### minLength
+#### maxLength
+
+### function
+#### validate
+
+### string
+#### validate
+
+### number
+#### validate
+#### isGreaterThan
+#### isLowerThan
+#### isEqualTo
+#### min
+#### max

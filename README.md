@@ -6,7 +6,7 @@
 The `config-tree-builder` allows the developer to specialize a configuration fast and without problems through an easy API.
 
 ```javascript
-var builder    = require('./index'),
+var builder    = require('config-tree-builder'),
     definition = builder('package'),
     result;
 

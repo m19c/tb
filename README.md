@@ -66,6 +66,10 @@ try {
 
 ### string
 #### validate
+#### regExpToBeTruly
+#### regExpToBeFalsely
+#### minLength
+#### maxLength
 
 ### number
 #### validate

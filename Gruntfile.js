@@ -5,8 +5,9 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         'mocha_istanbul': {
             coverage: {
-                src: 'test',
+                src: 'test/*',
                 options: {
+                    mask: '*.js',
                     coverage: true,
                     root: './lib',
                     reportFormats: ['lcovonly'],

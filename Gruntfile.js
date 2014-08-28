@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             coverage: {
                 options: {
                     file: 'dist/lcov.info',
-                    token: ''
+                    token: '739afa7c30a0a804f3b5c460981633e428721ddcd1de00e8b41d7caddfeaa115 '
                 }
             }
         },

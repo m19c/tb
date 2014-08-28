@@ -1,4 +1,5 @@
 # `config-tree-builder`
+[![Code Climate](https://codeclimate.com/github/MrBoolean/config-tree-builder/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/config-tree-builder) [![Test Coverage](https://codeclimate.com/github/MrBoolean/config-tree-builder/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/config-tree-builder) [![Build Status](https://travis-ci.org/MrBoolean/config-tree-builder.svg?branch=master)](https://travis-ci.org/MrBoolean/config-tree-builder) [![Dependency Status](https://gemnasium.com/MrBoolean/config-tree-builder.svg)](https://gemnasium.com/MrBoolean/config-tree-builder)
 
 ## Example
 ```javascript

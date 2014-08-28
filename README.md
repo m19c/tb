@@ -74,3 +74,7 @@ try {
 #### isEqualTo
 #### min
 #### max
+
+### boolean
+#### expectToBeTrue
+#### expectToBeFalse

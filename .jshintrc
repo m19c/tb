@@ -21,6 +21,7 @@
         "describe": true,
         "assert": true,
         "it": true,
-        "expect": true
+        "expect": true,
+        "Symbol": true
     }
 }

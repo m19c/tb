@@ -1,10 +1,51 @@
-var assert = require('chai').assert,
+var chai   = require('chai'),
+    assert = chai.assert,
     Tree   = require('./../lib/tree');
 
 describe('tree', function () {
     'use strict';
 
     describe('validate', function () {
+        it('should also work with a valid configuration', function () {
+            var builder = new Tree('valid_config'),
+                config;
+
+            builder
+                .children()
+                    .stringNode('name').isRequired().end()
+                    .stringNode('version').isRequired().end()
+                    .booleanNode('deploy').end()
+                    .arrayNode('keywords').minLength(1).end()
+                    .variableObjectNode('scripts').end()
+                    .objectNode('author')
+                        .children()
+                            .stringNode('name').end()
+                            .stringNode('email').end()
+                        .end()
+                    .end()
+                .end();
+
+            try {
+                config = builder.deploy({
+                    name: 'my-valid-config',
+                    version: '1.0.0',
+                    keywords: ['awesome'],
+                    deploy: false,
+                    scripts: {
+                        some: 'script'
+                    }
+                });
+            } catch (error) {
+                throw new chai.AssertionError(error.message + ' (' + error.path + ')', {}, assert.fail);
+            }
+
+            assert.strictEqual(config.name, 'my-valid-config');
+            assert.strictEqual(config.version, '1.0.0');
+            assert.isTrue(config.keywords.length === 1);
+            assert.strictEqual(config.keywords[0], 'awesome');
+            assert.typeOf(config.scripts, 'object');
+        });
+
         describe('booleanNode', function () {
             var builder = new Tree('test_booleanNode');
 

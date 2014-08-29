@@ -20,7 +20,7 @@
         "grunt-mocha": "0.4.11"
     },
     "scripts": {
-        "test": "./node_modules/.bin/grunt test"
+        "test": "grunt test"
     },
     "license": "MIT",
     "analyze": true

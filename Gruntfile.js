@@ -7,11 +7,21 @@ module.exports = function (grunt) {
             coverage: {
                 src: 'test/',
                 options: {
-                    coverage: true,
                     root: './lib',
                     reportFormats: ['lcovonly', 'html'],
                     coverageFolder: './dist',
                     mochaOptions: ['--recursive']
+                }
+            }
+        },
+        'istanbul_check_coverage': {
+            'default': {
+                options: {
+                    coverageFolder: './dist/*',
+                    check: {
+                        lines: 80,
+                        statements: 80
+                    }
                 }
             }
         },

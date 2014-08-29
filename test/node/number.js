@@ -1,7 +1,6 @@
-/*
 var assert     = require('chai').assert,
     NumberNode = require('./../../lib/node/number');
-*/
+
 describe('NumberNode', function () {
     'use strict';
 
@@ -24,7 +23,7 @@ describe('NumberNode', function () {
 
             assert.throws(function () {
                 node.validate(0);
-            })
+            });
         });
 
         it('should work with `isLowerThan`', function () {

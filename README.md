@@ -38,6 +38,28 @@ try {
 ```
 
 ## The API
+* [`mixedNode(key)`](#mixednodekey)
+  * `isRequired()`
+* `arrayNode(key)`
+  * `hasKey(key)`
+  * `lengthOf(value)`
+  * `minLength(value)`
+  * `maxLength(value)`
+* `stringNode(key)`
+  * `regExpToBeTruly(regEx)`
+  * `regExpToBeFalsely(regEx)`
+  * `minLength(value)`
+  * `maxLength(value)`
+* `numberNode(key)`
+  * `isGreaterThan(value)`
+  * `isLowerThan(value)`
+  * `isGreaterOrEqualThan(value)`
+  * `isLowerOrEqualThan(value)`
+  * `isEqualTo(value)`
+* `booleanNode(key)`
+  * `expectToBeTrue()`
+  * `expectToBeFalse()`
+
 ### `mixedNode(key)`
 #### `isRequired()`
 Elaborates that the defined parameter has to be occupied.

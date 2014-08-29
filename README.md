@@ -39,26 +39,27 @@ try {
 
 ## The API
 * [`mixedNode(key)`](#mixednodekey)
-  * `isRequired()`
-* `arrayNode(key)`
-  * `hasKey(key)`
-  * `lengthOf(value)`
-  * `minLength(value)`
-  * `maxLength(value)`
-* `stringNode(key)`
-  * `regExpToBeTruly(regEx)`
-  * `regExpToBeFalsely(regEx)`
-  * `minLength(value)`
-  * `maxLength(value)`
-* `numberNode(key)`
-  * `isGreaterThan(value)`
-  * `isLowerThan(value)`
-  * `isGreaterOrEqualThan(value)`
-  * `isLowerOrEqualThan(value)`
-  * `isEqualTo(value)`
-* `booleanNode(key)`
-  * `expectToBeTrue()`
-  * `expectToBeFalse()`
+  * [`isRequired()`](#isrequired)
+  * [`defaultValue(value)`](#defaultvaluevalue)
+* [`arrayNode(key)`](#arraynodekey)
+  * [`hasKey(key)`](#haskeykey)
+  * [`lengthOf(value)`](#lengthofvalue)
+  * [`minLength(value)`](#minlengthvalue)
+  * [`maxLength(value)`](#maxlengthvalue)
+* [`stringNode(key)`](#stringnodekey)
+  * [`regExpToBeTruly(regEx)`](#regexptobetrulyregex)
+  * [`regExpToBeFalsely(regEx)`](#regexptobefalselyregex)
+  * [`minLength(value)`](#minlengthvalue-1)
+  * [`maxLength(value)`](#maxlengthvalue-1)
+* [`numberNode(key)`](#numbernodekey)
+  * [`isGreaterThan(value)`](#isgreaterthanvalue)
+  * [`isLowerThan(value)`](#islowerthanvalue)
+  * [`isGreaterOrEqualThan(value)`](#isgreaterorequalthanvalue)
+  * [`isLowerOrEqualThan(value)`](#islowerorequalthanvalue)
+  * [`isEqualTo(value)`](#isequaltovalue)
+* [`booleanNode(key)`](#booleannodekey)
+  * [`expectToBeTrue()`](#expecttobetrue)
+  * [`expectToBeFalse()`](#expecttobefalse)
 
 ### `mixedNode(key)`
 #### `isRequired()`

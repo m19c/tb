@@ -19,7 +19,7 @@ describe('tree', function () {
                     .variableObjectNode('scripts').end()
                     .objectNode('author')
                         .children()
-                            .stringNode('name').end()
+                            .stringNode('name').isRequired().end()
                             .stringNode('email').end()
                         .end()
                     .end()
@@ -33,6 +33,9 @@ describe('tree', function () {
                     deploy: false,
                     scripts: {
                         some: 'script'
+                    },
+                    author: {
+                        name: 'Jon Doe'
                     }
                 });
             } catch (error) {
@@ -44,6 +47,21 @@ describe('tree', function () {
             assert.isTrue(config.keywords.length === 1);
             assert.strictEqual(config.keywords[0], 'awesome');
             assert.typeOf(config.scripts, 'object');
+        });
+
+        it('should throw an error if the obtained type is not allowed', function () {
+            var builder = new Tree('invalid_config');
+
+            builder
+                .children()
+                    .stringNode('name').isRequired().end()
+                .end();
+
+            assert.throws(function () {
+                builder.deploy({
+                    name: false
+                });
+            });
         });
 
         describe('booleanNode', function () {

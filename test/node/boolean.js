@@ -12,6 +12,13 @@ describe('BooleanNode', function () {
                 node.defaultValue(1337);
             });
         });
+
+        it('should accept boolean values', function () {
+            var node = new BooleanNode('my_value');
+
+            assert.strictEqual(node.defaultValue(true), node);
+            assert.strictEqual(node.defaultValue(false), node);
+        });
     });
 
     describe('validate', function () {

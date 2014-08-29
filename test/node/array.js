@@ -2,6 +2,8 @@ var assert    = require('chai').assert,
     ArrayNode = require('./../../lib/node/array');
 
 describe('ArrayNode', function () {
+    'use strict';
+
     describe('validate', function () {
         it('should work with `minLength` and `maxLength`', function () {
             var node = new ArrayNode('my_array');

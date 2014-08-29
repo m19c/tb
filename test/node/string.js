@@ -2,6 +2,8 @@ var assert     = require('chai').assert,
     StringNode = require('./../../lib/node/string');
 
 describe('StringNode', function () {
+    'use strict';
+
     describe('validate', function () {
         it('should work with `regExpToBeTruly`', function () {
             var node = (new StringNode('my_string')).regExpToBeTruly(/leet([137]{4})/);

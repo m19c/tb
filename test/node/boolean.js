@@ -2,6 +2,8 @@ var assert      = require('chai').assert,
     BooleanNode = require('./../../lib/node/boolean');
 
 describe('BooleanNode', function () {
+    'use strict';
+
     describe('defaultValue', function () {
         it('should throw an error if the obtained `defaultValue` is not a boolean', function () {
             var node = new BooleanNode('my_value');

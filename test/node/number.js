@@ -1,7 +1,10 @@
+/*
 var assert     = require('chai').assert,
     NumberNode = require('./../../lib/node/number');
-
+*/
 describe('NumberNode', function () {
+    'use strict';
+
     describe('validate', function () {
         it('should work with `isGreaterThan`', function () {
             var node = (new NumberNode('my_number')).isGreaterThan(1);

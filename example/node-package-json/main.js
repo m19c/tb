@@ -1,5 +1,4 @@
 var builder     = require('./index'),
-    ConfigError = require('./lib/error'),
     definition, result;
 
 definition = builder('my_config');

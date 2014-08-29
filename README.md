@@ -60,6 +60,8 @@ try {
 * [`booleanNode(key)`](#booleannodekey)
   * [`expectToBeTrue()`](#expecttobetrue)
   * [`expectToBeFalse()`](#expecttobefalse)
+* `functionNode(key)`
+* `variableObjectNode(key)`
 
 ### `mixedNode(key)`
 #### `isRequired()`

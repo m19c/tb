@@ -42,6 +42,7 @@ try {
 * [`mixedNode(key)`](#mixednodekey)
   * [`isRequired()`](#isrequired)
   * [`defaultValue(value)`](#defaultvaluevalue)
+  * [`validator(callback)`](#validatorcallback)
 * [`arrayNode(key)`](#arraynodekey)
   * [`hasKey(key)`](#haskeykey)
   * [`lengthOf(value)`](#lengthofvalue)
@@ -65,6 +66,9 @@ try {
 * `variableObjectNode(key)`
 
 ### `mixedNode(key)`
+#### `validator(callback)`
+Setup the validator callback.
+
 #### `isRequired()`
 Elaborates that the defined parameter has to be occupied.
 

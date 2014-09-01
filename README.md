@@ -6,6 +6,11 @@
 
 The `config-tree-builder` allows the developer to specialize a configuration fast and without problems through an easy API.
 
+## Install
+```bash
+npm install config-tree-builder
+```
+
 ```javascript
 var builder    = require('config-tree-builder'),
     definition = builder('package'),

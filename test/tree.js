@@ -80,7 +80,6 @@ describe('tree', function () {
                     }
                 });
             } catch (error) {
-                console.log(error);
                 throw new chai.AssertionError(error.message + ' (' + error.path + ')', {}, assert.fail);
             }
 

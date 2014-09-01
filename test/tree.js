@@ -6,6 +6,47 @@ describe('tree', function () {
     'use strict';
 
     describe('validate', function () {
+        it('should throw an error if too few keys where passed', function () {
+            assert.throws(function () {
+                var builder = new Tree('few_argument');
+
+                builder
+                    .children()
+                        .stringNode('name').end()
+                    .end();
+
+                builder.deploy({
+                    name: 'Some',
+                    version: '1.0.0'
+                });
+            });
+        }, 'Too few keys - version');
+
+        it('should throw an error if too few keys where passed (recursive)', function () {
+            assert.throws(function () {
+                var builder = new Tree('few_argument');
+
+                builder
+                    .children()
+                        .stringNode('name').end()
+                        .variableObjectNode('something').end()
+                        .objectNode('data')
+                            .children()
+                                .stringNode('version').end()
+                            .end()
+                        .end()
+                    .end();
+
+                builder.deploy({
+                    name: 'Some',
+                    xxx: '1.0.0',
+                    data: {
+                        cool: true
+                    }
+                });
+            }, 'Too few keys - cool, xxx');
+        });
+
         it('should also work with a valid configuration', function () {
             var builder = new Tree('valid_config'),
                 config;
@@ -39,6 +80,7 @@ describe('tree', function () {
                     }
                 });
             } catch (error) {
+                console.log(error);
                 throw new chai.AssertionError(error.message + ' (' + error.path + ')', {}, assert.fail);
             }
 

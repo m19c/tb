@@ -42,13 +42,22 @@ module.exports = function (grunt) {
                     jshintrc: __dirname + '/.jshintrc'
                 }
             }
+        },
+        watch: {
+            project: {
+                files: ['./lib/**/*.js', './test/**/*.js'],
+                tasks: ['jshint:standard', 'mocha_istanbul:coverage']
+            }
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-codeclimate-reporter');
 
     grunt.registerTask('default', ['jshint:standard', 'test']);
     grunt.registerTask('test', ['mocha_istanbul:coverage', 'codeclimate:coverage']);
+
+    grunt.registerTask('dev', ['watch']);
 };

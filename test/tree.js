@@ -6,6 +6,103 @@ describe('tree', function () {
     'use strict';
 
     describe('validate', function () {
+        it('should throw an error if the obtained validator does not return an array with two arguments', function () {
+            var expectedErrorMessage = 'To validate your configuration you need to return an array with two ' +
+                                       'arguments (key as well as value). Please update the response of the ' +
+                                       'validator "example"';
+
+            assert.throws(function () {
+                var builder = new Tree('should_throw');
+
+                builder
+                    .children()
+                        .stringNode('example')
+                            .validator(function () {})
+                        .end()
+                    .end();
+
+                builder.deploy({ example: 'some' });
+            }, expectedErrorMessage);
+        });
+
+        it('should throw an error if the custom validation fails', function () {
+            assert.throws(function () {
+                var builder = new Tree('should_throw');
+
+                builder
+                    .children()
+                        .stringNode('example')
+                            .validator(function () {
+                                throw new Error('Invalid example');
+                            })
+                        .end()
+                    .end();
+
+                builder.deploy({ example: 'test' });
+            }, 'Invalid example');
+        });
+
+        it('should forward errors', function () {
+            assert.throws(function () {
+                var builder = new Tree('forward_it');
+
+                builder
+                    .children()
+                        .objectNode('user')
+                            .children()
+                                .stringNode('name')
+                                    .isRequired()
+                                .end()
+                            .end()
+                        .end()
+                    .end();
+
+                builder.deploy({ user: {} });
+            }, 'Undefined configuration "forward_it.user.name"');
+        });
+
+        it('should also work with nested arrays', function () {
+            var builder = new Tree('nested_array');
+
+            builder
+                .children()
+                    .arrayNode('users')
+                        .minLength(1)
+                        .nestedObject()
+                            .stringNode('name').isRequired().end()
+                        .end()
+                    .end()
+                .end();
+
+            builder.deploy({
+                users: [
+                    { name: 'Jon Doe' }
+                ]
+            });
+        });
+
+        it('should also throw the too few keys error if the obtained nested object is invalid', function () {
+            assert.throws(function () {
+                var builder = new Tree('nested_array_should_throw');
+
+                builder
+                    .children()
+                        .arrayNode('users')
+                            .minLength(1)
+                            .nestedObject()
+                                .stringNode('name').isRequired().end()
+                            .end()
+                        .end()
+                    .end();
+
+                builder.deploy({
+                    users: [
+                        { name: 'Jon Doe', tooFew: 'some' }
+                    ]
+                });
+            }, 'Too few keys - tooFew');
+        });
+
         it('should throw an error if too few keys where passed', function () {
             assert.throws(function () {
                 var builder = new Tree('few_argument');
@@ -54,7 +151,12 @@ describe('tree', function () {
             builder
                 .children()
                     .stringNode('name').isRequired().end()
-                    .stringNode('version').isRequired().end()
+                    .stringNode('version')
+                        .isRequired()
+                        .validator(function (key, value) {
+                            return [key, value];
+                        })
+                    .end()
                     .booleanNode('deploy').end()
                     .arrayNode('keywords').minLength(1).end()
                     .variableObjectNode('scripts').end()

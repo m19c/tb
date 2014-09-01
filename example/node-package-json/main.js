@@ -1,36 +1,51 @@
-var builder     = require('./index'),
+var builder     = require('./../../index'),
     definition, result;
 
 definition = builder('my_config');
 
 definition
     .children()
-        .stringNode('name')
-            .isRequired()
-        .end()
-        .stringNode('version').end()
-        .objectNode('support')
-            .children()
-                .stringNode('homepage').isRequired().end()
+        .stringNode('name').isRequired().end()
+        .stringNode('version').isRequired().end()
+        .stringNode('description').end()
+        .stringNode('author').end()
+        .arrayNode('contributors')
+            .nestedObject()
+                .stringNode('name').end()
+                .stringNode('email').end()
             .end()
         .end()
-        .arrayNode('leet')
-            .isRequired()
-            .hasKey(1).hasKey(3).hasKey(7)
-            .lengthOf(4)
+        .variableObjectNode('bin').end()
+        .variableObjectNode('script').end()
+        .stringNode('main').end()
+        .objectNode('repository')
+            .children()
+                .stringNode('type').end()
+                .stringNode('url').end()
+            .end()
         .end()
-        .variableObjectNode('scripts').isRequired().end()
+        .objectNode('bugs')
+            .children()
+                .stringNode('url').end()
+            .end()
+        .end()
+        .arrayNode('keywords').end()
+        .variableObjectNode('dependencies').end()
+        .variableObjectNode('devDependencies').end()
+        .booleanNode('preferGlobal').end()
+        .booleanNode('private').defaultValue(false).end()
+        .objectNode('publishConfig')
+            .children()
+                .stringNode('registry').end()
+            .end()
+        .end()
+        .stringNode('subdomain').end()
+        .booleanNode('analyze').defaultValue(false).end()
+        .stringNode('license').end()
     .end();
 
 try {
-    result = definition.deploy({
-        name: 'my-name',
-        version: '1.2.0',
-        support: {
-            homepage: 'http://www.google.com'
-        },
-        leet: [1, 3, 3, 7]
-    });
+    result = definition.deploy(require('./input.json'));
 
     console.log('------');
     console.log(result);

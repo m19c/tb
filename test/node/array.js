@@ -1,16 +1,8 @@
 var assert    = require('chai').assert,
-    ArrayNode = require('./../../lib/node/array'),
-    Context   = require('./../../lib/context');
+    ArrayNode = require('./../../lib/node/array');
 
 describe('ArrayNode', function () {
     'use strict';
-
-    describe('children', function() {
-        it('should return a context', function () {
-            var node = new ArrayNode('my_array');
-            assert.instanceOf(node.children(), Context);
-        });
-    });
 
     describe('validate', function () {
         it('should work with `minLength` and `maxLength`', function () {

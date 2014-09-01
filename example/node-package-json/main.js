@@ -19,6 +19,11 @@ definition
         .variableObjectNode('script').end()
         .stringNode('main').end()
         .objectNode('repository')
+            .validator(function (key, value) {
+                'use strict';
+
+                return [key, value];
+            })
             .children()
                 .stringNode('type').end()
                 .stringNode('url').end()
@@ -46,9 +51,6 @@ definition
 
 try {
     result = definition.deploy(require('./input.json'));
-
-    console.log('------');
-    console.log(result);
 } catch (error) {
     console.error(error.path + ': ' + error.message);
 }

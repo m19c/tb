@@ -11,6 +11,7 @@ The `config-tree-builder` allows the developer to specialize a configuration fas
 npm install config-tree-builder
 ```
 
+## Example
 ```javascript
 var builder    = require('config-tree-builder'),
     definition = builder('package'),

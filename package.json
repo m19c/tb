@@ -3,6 +3,7 @@
   "description": "The config-tree-builder allows the developer to specialize a configuration fast and without problems through an easy API.",
   "version": "1.0.0",
   "main": "./index.js",
+  "bin": "./bin/config-tree-builder.js",
   "keywords": ["config", "validation", "validator", "tree", "builder"],
   "dependencies": {
     "underscore": "1.7.0"

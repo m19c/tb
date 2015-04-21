@@ -1,7 +1,7 @@
 /*
-var assert       = require('chai').assert,
-    FunctionNode = require('./../../lib/node/function');
+var assert     = require('chai').assert,
+  FunctionNode = require('./../../lib/node/function');
 */
 describe('FunctionNode', function () {
-    'use strict';
+  'use strict';
 });

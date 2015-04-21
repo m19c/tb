@@ -1,29 +1,29 @@
 {
-    "name": "config-tree-builder",
-    "description": "The config-tree-builder allows the developer to specialize a configuration fast and without problems through an easy API.",
-    "version": "1.0.0",
-    "main": "./index.js",
-    "keywords": ["config", "validation", "validator", "tree", "builder"],
-    "dependencies": {
-        "underscore": "1.7.0"
-    },
-    "devDependencies": {
-        "mocha": "1.21.4",
-        "chai": "1.9.1",
-        "grunt": "~0.4.5",
-        "istanbul": "0.3.0",
-        "grunt-cli": "0.1.13",
-        "grunt-contrib-watch": "~0.4.0",
-        "grunt-contrib-jshint": "~0.10.0",
-        "grunt-mocha-test": "0.11.0",
-        "grunt-mocha-istanbul": "2.0.0",
-        "grunt-codeclimate-reporter": "1.0.0",
-        "grunt-istanbul": "0.3.0",
-        "grunt-mocha": "0.4.11"
-    },
-    "scripts": {
-        "test": "grunt test"
-    },
-    "license": "MIT",
-    "analyze": true
+  "name": "config-tree-builder",
+  "description": "The config-tree-builder allows the developer to specialize a configuration fast and without problems through an easy API.",
+  "version": "1.0.0",
+  "main": "./index.js",
+  "keywords": ["config", "validation", "validator", "tree", "builder"],
+  "dependencies": {
+    "underscore": "1.7.0"
+  },
+  "devDependencies": {
+    "mocha": "1.21.4",
+    "chai": "1.9.1",
+    "grunt": "~0.4.5",
+    "istanbul": "0.3.0",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-mocha-test": "0.11.0",
+    "grunt-mocha-istanbul": "2.0.0",
+    "grunt-codeclimate-reporter": "1.0.0",
+    "grunt-istanbul": "0.3.0",
+    "grunt-mocha": "0.4.11"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "license": "MIT",
+  "analyze": true
 }

@@ -1,7 +1,7 @@
 var Tree = require('./lib/tree');
 
 module.exports = function create(name) {
-    'use strict';
+  'use strict';
 
-    return new Tree(name || 'root');
+  return new Tree(name || 'root');
 };

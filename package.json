@@ -20,7 +20,8 @@
     "grunt-mocha-istanbul": "2.0.0",
     "grunt-codeclimate-reporter": "1.0.0",
     "grunt-istanbul": "0.3.0",
-    "grunt-mocha": "0.4.11"
+    "grunt-mocha": "0.4.11",
+    "commander": "*"
   },
   "scripts": {
     "test": "grunt test"

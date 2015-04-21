@@ -137,6 +137,9 @@ Expects 'true`.
 #### `expectToBeFalse()`
 Expects `false`.
 
+## Docs generator
+...
+
 ## Contribute
 You want to help us? Cool, thanks!
 

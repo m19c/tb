@@ -1,8 +1,13 @@
-var commander = require('commander'),
-    executable;
+#!/usr/bin/env node
 
-executable = commander();
+var pkg     = require('../package.json'),
+    program = require('commander'),
+    build   = require('../lib/command/build');
 
-executable
-  .name('config-tree-builder')
+program
+  .version(pkg.version)
 ;
+
+build(program);
+
+program.parse(process.argv);

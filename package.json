@@ -6,7 +6,8 @@
   "bin": "./bin/config-tree-builder.js",
   "keywords": ["config", "validation", "validator", "tree", "builder"],
   "dependencies": {
-    "underscore": "1.7.0"
+    "underscore": "1.7.0",
+    "commander": "2.8.0"
   },
   "devDependencies": {
     "mocha": "1.21.4",
@@ -21,7 +22,9 @@
     "grunt-codeclimate-reporter": "1.0.0",
     "grunt-istanbul": "0.3.0",
     "grunt-mocha": "0.4.11",
-    "commander": "*"
+
+    "gulp": "~3.8.11",
+    "gulp-mocha-tdd": "~0.4.2"
   },
   "scripts": {
     "test": "grunt test"

@@ -11,7 +11,6 @@ function MixedNode(key, parent, options) {
   this.options = _.extend({
     isRequired:  null,
     validator:   null,
-    sanitizer:   null,
     description: null
   }, options || {});
 }
@@ -23,11 +22,6 @@ MixedNode.prototype.description = function(value) {
 
 MixedNode.prototype.validator = function validator(callback) {
   this.options.validator = callback;
-  return this;
-};
-
-MixedNode.prototype.sanitizer = function sanitizer(callback) {
-  this.options.sanitizer = callback;
   return this;
 };
 

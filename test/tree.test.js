@@ -5,11 +5,14 @@ var chai   = require('chai'),
 describe('tree', function () {
   'use strict';
 
+  describe('sanitizer', function () {
+    it('rethrows the obtained error');
+    it('sanitizes the obtained value');
+  });
+
   describe('validate', function () {
-    it('should throw an error if the obtained validator does not return an array with two arguments', function () {
-      var expectedErrorMessage = 'To validate your configuration you need to return an array with two ' +
-                     'arguments (key as well as value). Please update the response of the ' +
-                     'validator "example"';
+    it('should throws an error if the obtained validator returns false', function () {
+      var expectedErrorMessage = 'Validation failed';
 
       assert.throws(function () {
         var builder = new Tree('should_throw');
@@ -17,9 +20,12 @@ describe('tree', function () {
         builder
           .children()
             .stringNode('example')
-              .validator(function () {})
+              .validator(function () {
+                return false;
+              })
             .end()
-          .end();
+          .end()
+        ;
 
         builder.deploy({ example: 'some' });
       }, expectedErrorMessage);
@@ -146,7 +152,7 @@ describe('tree', function () {
 
     it('should also work with a valid configuration', function () {
       var builder = new Tree('valid_config'),
-        config;
+          config;
 
       builder
         .children()

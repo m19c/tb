@@ -1,5 +1,7 @@
+'use strict';
+
 var builder   = require('./../../index'),
-  definition, result;
+    definition, result;
 
 definition = builder('my_config');
 
@@ -19,10 +21,8 @@ definition
     .variableObjectNode('script').end()
     .stringNode('main').end()
     .objectNode('repository')
-      .validator(function (key, value) {
-        'use strict';
-
-        return [key, value];
+      .validator(function (key, repository) {
+        return repository.url && repository.url.substr(0, 4) === 'http';
       })
       .children()
         .stringNode('type').end()
@@ -51,6 +51,8 @@ definition
 
 try {
   result = definition.deploy(require('./input.json'));
+
+  console.log(result);
 } catch (error) {
   console.error(error.path + ': ' + error.message);
 }

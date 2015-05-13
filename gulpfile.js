@@ -1,13 +1,11 @@
-var gulp = require('gulp'),
-    tdd  = require('gulp-mocha-tdd');
+var gulp  = require('gulp'),
+    mocha = require('gulp-mocha');
 
 gulp.task('test', function () {
-  tdd(gulp, {
-    rootTestsDir: true,
-    testsDirName: 'test',
-    scriptsDirName: 'lib',
-    init: function() {
-      global.expect = require('chai').expect;
-    }
-  });
+  gulp
+    .src('test/**/*.test.js', { read: false })
+    .pipe(mocha({
+      reporter: 'nyan'
+    }))
+  ;
 });

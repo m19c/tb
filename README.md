@@ -4,6 +4,8 @@
 
 [![NPM](https://nodei.co/npm/config-tree-builder.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/config-tree-builder/)
 
+-- Rework
+
 > Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
 
 The `config-tree-builder` allows the developer to specialize a configuration fast and without problems through an easy API.

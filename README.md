@@ -1,8 +1,8 @@
 # `tb`
-[![Code Climate](https://codeclimate.com/github/MrBoolean/config-tree-builder/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/config-tree-builder) [![Test Coverage](https://codeclimate.com/github/MrBoolean/config-tree-builder/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/config-tree-builder) [![Build Status](https://travis-ci.org/MrBoolean/config-tree-builder.svg?branch=master)](https://travis-ci.org/MrBoolean/config-tree-builder) [![Dependency Status](https://gemnasium.com/MrBoolean/config-tree-builder.svg)](https://gemnasium.com/MrBoolean/config-tree-builder)
-[![Version](https://badge.fury.io/js/config-tree-builder.svg)](https://www.npmjs.org/package/config-tree-builder)
+[![Code Climate](https://codeclimate.com/github/MrBoolean/tb/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Test Coverage](https://codeclimate.com/github/MrBoolean/tb/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Build Status](https://travis-ci.org/MrBoolean/tb.svg?branch=master)](https://travis-ci.org/MrBoolean/tb) [![Dependency Status](https://gemnasium.com/MrBoolean/tb.svg)](https://gemnasium.com/MrBoolean/tb)
+[![Version](https://badge.fury.io/js/tb.svg)](https://www.npmjs.org/package/tb)
 
-[![NPM](https://nodei.co/npm/config-tree-builder.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/config-tree-builder/)
+[![NPM](https://nodei.co/npm/tb.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tb/)
 
 > Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
 
@@ -15,7 +15,7 @@ npm install tb
 
 ## Example
 ```javascript
-var builder = require('config-tree-builder');
+var builder = require('tb');
 var definition = builder('package');
 var result;
 

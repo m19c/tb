@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var info = require('../package.json');
+var program = require('commander');
+var build = require('../lib/command/build');
+
+program
+  .version(info.version)
+;
+
+build(program);
+
+program.parse(process.argv);

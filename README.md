@@ -20,7 +20,10 @@ var result;
 
 definition
   .children()
-    .stringNode('name').isRequired().end()
+    .stringNode('name')
+      .isRequired()
+      .description('The package name')
+    .end()
     .objectNode('developer')
       .children()
         .stringNode('name').isRequired().end()

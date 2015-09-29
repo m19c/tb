@@ -3,11 +3,6 @@ var assert = chai.assert;
 var Tree = require('./../lib/tree');
 
 describe('tree', function() {
-  describe('sanitizer', function() {
-    it('rethrows the obtained error');
-    it('sanitizes the obtained value');
-  });
-
   describe('validate', function() {
     it('should throw an error if the obtained validator returns false', function() {
       assert.throws(function() {
@@ -256,6 +251,46 @@ describe('tree', function() {
       it('should throw an error if the required parameter "something" is not passed', function() {
         assert.throws(function() {
           builder.deploy({});
+        });
+      });
+
+      describe('sanitizer', function() {
+        it('throws an error if the sanitizer throws an error', function() {
+          assert.throws(function() {
+            var sanitize = new Tree('sanitize');
+
+            sanitize
+              .children()
+                .mixedNode('flag')
+                  .isRequired()
+                  .sanitizer(function() {
+                    throw new Error('Something went wrong');
+                  })
+                .end()
+              .end()
+            ;
+
+            sanitize.deploy({ flag: 1 });
+          }, 'Something went wrong');
+        });
+
+        it('sanitizes the value', function() {
+          var sanitize = new Tree('sanitize');
+          var config;
+
+          sanitize
+            .children()
+              .mixedNode('flag')
+                .isRequired()
+                .sanitizer(function(value) {
+                  return parseInt(value, 10) * 3.14;
+                })
+              .end()
+            .end()
+          ;
+
+          config = sanitize.deploy({ flag: '1337' });
+          assert.strictEqual(config.flag, 4198.18);
         });
       });
     });

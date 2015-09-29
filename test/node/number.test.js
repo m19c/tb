@@ -2,6 +2,13 @@ var assert = require('chai').assert;
 var NumberNode = require('./../../lib/node/number');
 
 describe('NumberNode', function() {
+  describe('isStrictEqualTo', function() {
+    it('stores the information in the options object', function() {
+      var node = (new NumberNode('isStrictEqualTo')).isStrictEqualTo(1);
+      assert.isNumber(node.options.strictEqualTo);
+    });
+  });
+
   describe('validate', function() {
     it('should work with `isGreaterThan`', function() {
       var node = (new NumberNode('my_number')).isGreaterThan(1);

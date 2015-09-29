@@ -4,6 +4,11 @@
   "version": "2.0.0-alpha1",
   "main": "./index.js",
   "bin": "./bin/config-tree-builder.js",
+  "author": "Marc Binder <marcandrebinder@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrBoolean/tb.git"
+  },
   "keywords": [
     "config",
     "validation",

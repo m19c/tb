@@ -9,9 +9,7 @@ describe('tree', function() {
   });
 
   describe('validate', function() {
-    it('should throws an error if the obtained validator returns false', function() {
-      var expectedErrorMessage = 'Validation failed';
-
+    it('should throw an error if the obtained validator returns false', function() {
       assert.throws(function() {
         var builder = new Tree('should_throw');
 
@@ -26,7 +24,7 @@ describe('tree', function() {
         ;
 
         builder.deploy({ example: 'some' });
-      }, expectedErrorMessage);
+      }, 'Validation failed');
     });
 
     it('should throw an error if the custom validation fails', function() {

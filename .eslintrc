@@ -5,7 +5,8 @@
   },
   "globals": {
     "describe": true,
-    "it": true
+    "it": true,
+    "angular": true
   },
   "rules": {
     "no-var": 0,

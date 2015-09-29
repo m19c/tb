@@ -1,0 +1,47 @@
+doctype html
+html(lang='en')
+  head
+    title= 'tb'
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    script(src='https://code.angularjs.org/1.4.6/angular.min.js')
+    script.
+      (function() {
+        var app = angular.module('app', []);
+        app.controller('TreeController', function() {});
+      })();
+  body(ng-app='app')
+    div(class='container-fluid' ng-controller='TreeController')
+      - var id = 0
+      mixin tree(data, hideable)
+        - id++
+        - var angularKey = 'is_' + id + '_hidden'
+        if hideable === true
+          a(ng-click='#{angularKey} = !#{angularKey}' class='btn btn-default')
+            i(class='fa fa-eye')
+
+        table(class='table table-bordered' ng-hide='#{angularKey} === true')
+          thead
+            tr
+              th(width='100px').
+                key
+              th.
+                context
+          tbody
+            each item, key in data
+              tr
+                td
+                  code= key
+                if item.description
+                  br
+                  span(class='text-muted')= item.description
+                td
+                  if item._children
+                    mixin tree(item._children, true)
+
+
+
+      each item, key in context.data
+        h1= key
+        mixin tree(item)

@@ -17,11 +17,16 @@
     "builder"
   ],
   "dependencies": {
+    "bluebird": "^2.10.1",
     "commander": "^2.8.1",
+    "jade": "^1.11.0",
     "lodash.assign": "^3.2.0",
     "lodash.isempty": "^3.0.4",
     "lodash.isobject": "^3.0.2",
-    "lodash.union": "^3.1.0"
+    "lodash.merge": "^3.3.2",
+    "lodash.union": "^3.1.0",
+    "mkdirp": "^0.5.1",
+    "mz": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.3",

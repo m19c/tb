@@ -1,4 +1,4 @@
-var builder = require('./../../index');
+var builder = require('./../../');
 var definition;
 var result;
 

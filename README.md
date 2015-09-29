@@ -1,10 +1,11 @@
 # `tb`
-[![Code Climate](https://codeclimate.com/github/MrBoolean/tb/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Test Coverage](https://codeclimate.com/github/MrBoolean/tb/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Build Status](https://travis-ci.org/MrBoolean/tb.svg?branch=master)](https://travis-ci.org/MrBoolean/tb) [![Dependency Status](https://gemnasium.com/MrBoolean/tb.svg)](https://gemnasium.com/MrBoolean/tb)
-[![npm](https://img.shields.io/npm/v/tb.svg)](https://npmjs.org/tb)
+[![Code Climate](https://codeclimate.com/github/MrBoolean/tb/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Test Coverage](https://codeclimate.com/github/MrBoolean/tb/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Build Status](https://travis-ci.org/MrBoolean/tb.svg?branch=master)](https://travis-ci.org/MrBoolean/tb) [![Dependency Status](https://gemnasium.com/MrBoolean/tb.svg)](https://gemnasium.com/MrBoolean/tb) [![npm](https://img.shields.io/npm/v/tb.svg)](https://npmjs.org/tb)
 
 > Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
 
-The `tb` (known as `tree-builder`) allows the developer to specialize a configuration fast and without problems through an easy API.
+The `tb` (known as `tree-builder`) allows the developer to specialize a configuration fast and without problems through an easy [API](https://github.com/MrBoolean/tb/blob/master/API.md).
+
+[API](https://github.com/MrBoolean/tb/blob/master/API.md) | [Changelog](https://github.com/MrBoolean/tb/blob/master/Changelog.md)
 
 ## Install
 ```bash
@@ -43,97 +44,6 @@ try {
   console.error(error.path + ': ' + error.message);
 }
 ```
-
-## The API
-* [`mixedNode(key)`](#mixednodekey)
-  * [`isRequired()`](#isrequired)
-  * [`defaultValue(value)`](#defaultvaluevalue)
-  * [`validator(callback)`](#validatorcallback)
-* [`arrayNode(key)`](#arraynodekey)
-  * [`hasKey(key)`](#haskeykey)
-  * [`lengthOf(value)`](#lengthofvalue)
-  * [`minLength(value)`](#minlengthvalue)
-  * [`maxLength(value)`](#maxlengthvalue)
-* [`stringNode(key)`](#stringnodekey)
-  * [`regExpToBeTruly(regEx)`](#regexptobetrulyregex)
-  * [`regExpToBeFalsely(regEx)`](#regexptobefalselyregex)
-  * [`minLength(value)`](#minlengthvalue-1)
-  * [`maxLength(value)`](#maxlengthvalue-1)
-* [`numberNode(key)`](#numbernodekey)
-  * [`isGreaterThan(value)`](#isgreaterthanvalue)
-  * [`isLowerThan(value)`](#islowerthanvalue)
-  * [`isGreaterOrEqualThan(value)`](#isgreaterorequalthanvalue)
-  * [`isLowerOrEqualThan(value)`](#islowerorequalthanvalue)
-  * [`isEqualTo(value)`](#isequaltovalue)
-* [`booleanNode(key)`](#booleannodekey)
-  * [`expectToBeTrue()`](#expecttobetrue)
-  * [`expectToBeFalse()`](#expecttobefalse)
-* `functionNode(key)`
-* `variableObjectNode(key)`
-
-### `mixedNode(key)`
-#### `validator(callback)`
-Setup the validator callback.
-
-#### `isRequired()`
-Elaborates that the defined parameter has to be occupied.
-
-#### `defaultValue(value)`
-Defines the default-`value`.
-
-### `objectNode(key)`
-
-### `arrayNode(key)`
-#### `hasKey(key)`
-Defines that the defined array has to contain the declared `key`.
-
-#### `lengthOf(value)`
-Defines the length of the array.
-
-#### `minLength(value)`
-Defines the minimal length of the array.
-
-#### `maxLength(value)`
-Defines the maximal length of the array.
-
-### `functionNode(key)`
-See `global`.
-
-### `stringNode(key)`
-#### `regExpToBeTruly(regEx)`
-Expects that the committed RegEx is tested positiv.
-
-#### `regExpToBeFalsely(regEx)`
-Expects that the committed RegEx is tested negativ.
-
-#### `minLength(value)`
-Defines the minimal length.
-
-#### `maxLength(value)`
-Defines the maximal length.
-
-### `numberNode(key)`
-#### `isGreaterThan(value)`
-Expects that the merit is bigger as `value`.
-
-#### `isLowerThan(value)`
-Expects that the merit is smaller as `value`.
-
-#### `isGreaterOrEqualThan(value)`
-Expects the merit to be greater or equal to `value`.
-
-#### `isLowerOrEqualThan(value)`
-Expects the merit to be smaller or equal to `value`.
-
-#### `isEqualTo(value)`
-Expects the merit to be equal to `value`.
-
-### `booleanNode(key)`
-#### `expectToBeTrue()`
-Expects 'true`.
-
-#### `expectToBeFalse()`
-Expects `false`.
 
 ## Docs generator
 ...

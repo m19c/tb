@@ -3,6 +3,10 @@
   "env": {
     "node": true
   },
+  "globals": {
+    "describe": true,
+    "it": true
+  },
   "rules": {
     "no-var": 0,
     "comma-dangle": [2, "never"],

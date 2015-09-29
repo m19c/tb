@@ -1,10 +1,8 @@
-# `config-tree-builder`
+# `tb`
 [![Code Climate](https://codeclimate.com/github/MrBoolean/config-tree-builder/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/config-tree-builder) [![Test Coverage](https://codeclimate.com/github/MrBoolean/config-tree-builder/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/config-tree-builder) [![Build Status](https://travis-ci.org/MrBoolean/config-tree-builder.svg?branch=master)](https://travis-ci.org/MrBoolean/config-tree-builder) [![Dependency Status](https://gemnasium.com/MrBoolean/config-tree-builder.svg)](https://gemnasium.com/MrBoolean/config-tree-builder)
 [![Version](https://badge.fury.io/js/config-tree-builder.svg)](https://www.npmjs.org/package/config-tree-builder)
 
 [![NPM](https://nodei.co/npm/config-tree-builder.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/config-tree-builder/)
-
--- Rework
 
 > Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
 
@@ -17,34 +15,34 @@ npm install config-tree-builder
 
 ## Example
 ```javascript
-var builder    = require('config-tree-builder'),
-    definition = builder('package'),
-    result;
+var builder = require('config-tree-builder');
+var definition = builder('package');
+var result;
 
 definition
-    .children()
+  .children()
+    .stringNode('name').isRequired().end()
+    .objectNode('developer')
+      .children()
         .stringNode('name').isRequired().end()
-        .objectNode('developer')
-            .children()
-                .stringNode('name').isRequired().end()
-                .stringNode('email').isRequired().end()
-                .numberNode('age')
-                    .isGreaterOrEqualThan(18)
-                .end()
-            .end()
+        .stringNode('email').isRequired().end()
+        .numberNode('age')
+          .isGreaterOrEqualThan(18)
         .end()
-    .end();
+      .end()
+    .end()
+  .end();
 
 try {
-    result = definition.deploy({
-        name: 'Pentakill Package',
-        developer: {
-            name: 'Jon Doe',
-            email: 'jon@doe.com'
-        }
-    });
+  result = definition.deploy({
+    name: 'Pentakill Package',
+    developer: {
+      name: 'Jon Doe',
+      email: 'jon@doe.com'
+    }
+  });
 } catch (error) {
-    console.error(error.path + ': ' + error.message);
+  console.error(error.path + ': ' + error.message);
 }
 ```
 

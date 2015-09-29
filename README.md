@@ -1,8 +1,7 @@
 # `tb`
 [![Code Climate](https://codeclimate.com/github/MrBoolean/tb/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Test Coverage](https://codeclimate.com/github/MrBoolean/tb/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Build Status](https://travis-ci.org/MrBoolean/tb.svg?branch=master)](https://travis-ci.org/MrBoolean/tb) [![Dependency Status](https://gemnasium.com/MrBoolean/tb.svg)](https://gemnasium.com/MrBoolean/tb)
 [![Version](https://badge.fury.io/js/tb.svg)](https://www.npmjs.org/package/tb)
-
-[![NPM](https://nodei.co/npm/tb.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tb/)
+[![npm](https://img.shields.io/npm/v/tb.svg)](https://npmjs.org/tb)
 
 > Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
 

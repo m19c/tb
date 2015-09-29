@@ -1,12 +1,10 @@
-var ConfigError = require('./../lib/error'),
-    assert      = require('chai').assert;
+var ConfigError = require('./../lib/error');
+var assert = require('chai').assert;
 
-describe('ConfigError', function () {
-  'use strict';
-
-  it('should contain `message`, `name` as well as `path`', function () {
-    var message = 'Something went wrong',
-      path  = 'this.is.my.path';
+describe('ConfigError', function() {
+  it('should contain `message`, `name` as well as `path`', function() {
+    var message = 'Something went wrong';
+    var path = 'this.is.my.path';
 
     try {
       throw new ConfigError(message, path);

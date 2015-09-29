@@ -1,19 +1,17 @@
-var assert      = require('chai').assert,
-    BooleanNode = require('./../../lib/node/boolean');
+var assert = require('chai').assert;
+var BooleanNode = require('./../../lib/node/boolean');
 
-describe('BooleanNode', function () {
-  'use strict';
-
-  describe('defaultValue', function () {
-    it('should throw an error if the obtained `defaultValue` is not a boolean', function () {
+describe('BooleanNode', function() {
+  describe('defaultValue', function() {
+    it('should throw an error if the obtained `defaultValue` is not a boolean', function() {
       var node = new BooleanNode('my_value');
 
-      assert.throws(function () {
+      assert.throws(function() {
         node.defaultValue(1337);
       });
     });
 
-    it('should accept boolean values', function () {
+    it('should accept boolean values', function() {
       var node = new BooleanNode('my_value');
 
       assert.strictEqual(node.defaultValue(true), node);
@@ -21,25 +19,25 @@ describe('BooleanNode', function () {
     });
   });
 
-  describe('validate', function () {
-    it('should work with `expectToBeTrue`', function () {
+  describe('validate', function() {
+    it('should work with `expectToBeTrue`', function() {
       var node = new BooleanNode('my_value');
 
       node.expectToBeTrue();
       assert.isTrue(node.validate(true));
 
-      assert.throws(function () {
+      assert.throws(function() {
         node.validate(false);
       });
     });
 
-    it('should work with `expectToBeFalse`', function () {
+    it('should work with `expectToBeFalse`', function() {
       var node = new BooleanNode('my_value');
 
       node.expectToBeFalse();
       assert.isFalse(node.validate(false));
 
-      assert.throws(function () {
+      assert.throws(function() {
         node.validate(true);
       });
     });

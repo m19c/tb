@@ -1,26 +1,24 @@
-var chai   = require('chai'),
-    assert = chai.assert,
-    Tree   = require('./../lib/tree');
+var chai = require('chai');
+var assert = chai.assert;
+var Tree = require('./../lib/tree');
 
-describe('tree', function () {
-  'use strict';
-
-  describe('sanitizer', function () {
+describe('tree', function() {
+  describe('sanitizer', function() {
     it('rethrows the obtained error');
     it('sanitizes the obtained value');
   });
 
-  describe('validate', function () {
-    it('should throws an error if the obtained validator returns false', function () {
+  describe('validate', function() {
+    it('should throws an error if the obtained validator returns false', function() {
       var expectedErrorMessage = 'Validation failed';
 
-      assert.throws(function () {
+      assert.throws(function() {
         var builder = new Tree('should_throw');
 
         builder
           .children()
             .stringNode('example')
-              .validator(function () {
+              .validator(function() {
                 return false;
               })
             .end()
@@ -31,14 +29,14 @@ describe('tree', function () {
       }, expectedErrorMessage);
     });
 
-    it('should throw an error if the custom validation fails', function () {
-      assert.throws(function () {
+    it('should throw an error if the custom validation fails', function() {
+      assert.throws(function() {
         var builder = new Tree('should_throw');
 
         builder
           .children()
             .stringNode('example')
-              .validator(function () {
+              .validator(function() {
                 throw new Error('Invalid example');
               })
             .end()
@@ -48,8 +46,8 @@ describe('tree', function () {
       }, 'Invalid example');
     });
 
-    it('should forward errors', function () {
-      assert.throws(function () {
+    it('should forward errors', function() {
+      assert.throws(function() {
         var builder = new Tree('forward_it');
 
         builder
@@ -67,7 +65,7 @@ describe('tree', function () {
       }, 'Undefined configuration "forward_it.user.name"');
     });
 
-    it('should also work with nested arrays', function () {
+    it('should also work with nested arrays', function() {
       var builder = new Tree('nested_array');
 
       builder
@@ -87,8 +85,8 @@ describe('tree', function () {
       });
     });
 
-    it('should also throw the too few keys error if the obtained nested object is invalid', function () {
-      assert.throws(function () {
+    it('should also throw the too few keys error if the obtained nested object is invalid', function() {
+      assert.throws(function() {
         var builder = new Tree('nested_array_should_throw');
 
         builder
@@ -109,8 +107,8 @@ describe('tree', function () {
       }, 'Too few keys - tooFew');
     });
 
-    it('should throw an error if too few keys where passed', function () {
-      assert.throws(function () {
+    it('should throw an error if too few keys where passed', function() {
+      assert.throws(function() {
         var builder = new Tree('few_argument');
 
         builder
@@ -125,8 +123,8 @@ describe('tree', function () {
       });
     }, 'Too few keys - version');
 
-    it('should throw an error if too few keys where passed (recursive)', function () {
-      assert.throws(function () {
+    it('should throw an error if too few keys where passed (recursive)', function() {
+      assert.throws(function() {
         var builder = new Tree('few_argument');
 
         builder
@@ -150,16 +148,16 @@ describe('tree', function () {
       }, 'Too few keys - cool, xxx');
     });
 
-    it('should also work with a valid configuration', function () {
-      var builder = new Tree('valid_config'),
-          config;
+    it('should also work with a valid configuration', function() {
+      var builder = new Tree('valid_config');
+      var config;
 
       builder
         .children()
           .stringNode('name').isRequired().end()
           .stringNode('version')
             .isRequired()
-            .validator(function (key, value) {
+            .validator(function(key, value) {
               return [key, value];
             })
           .end()
@@ -198,7 +196,7 @@ describe('tree', function () {
       assert.typeOf(config.scripts, 'object');
     });
 
-    it('should throw an error if the obtained type is not allowed', function () {
+    it('should throw an error if the obtained type is not allowed', function() {
       var builder = new Tree('invalid_config');
 
       builder
@@ -206,14 +204,14 @@ describe('tree', function () {
           .stringNode('name').isRequired().end()
         .end();
 
-      assert.throws(function () {
+      assert.throws(function() {
         builder.deploy({
           name: false
         });
       });
     });
 
-    describe('booleanNode', function () {
+    describe('booleanNode', function() {
       var builder = new Tree('test_booleanNode');
 
       builder
@@ -223,14 +221,14 @@ describe('tree', function () {
           .end()
         .end();
 
-      it('should throw an error if the required parameter "enabled" is not passed', function () {
-        assert.throws(function () {
+      it('should throw an error if the required parameter "enabled" is not passed', function() {
+        assert.throws(function() {
           builder.deploy({});
         });
       });
     });
 
-    describe('functionNode', function () {
+    describe('functionNode', function() {
       var builder = new Tree('test_function');
 
       builder
@@ -240,14 +238,14 @@ describe('tree', function () {
           .end()
         .end();
 
-      it('should throw an error if the required parameter "callback" is not passed', function () {
-        assert.throws(function () {
+      it('should throw an error if the required parameter "callback" is not passed', function() {
+        assert.throws(function() {
           builder.deploy({});
         });
       });
     });
 
-    describe('mixedNode', function () {
+    describe('mixedNode', function() {
       var builder = new Tree('test_mixedNode');
 
       builder
@@ -257,14 +255,14 @@ describe('tree', function () {
           .end()
         .end();
 
-      it('should throw an error if the required parameter "something" is not passed', function () {
-        assert.throws(function () {
+      it('should throw an error if the required parameter "something" is not passed', function() {
+        assert.throws(function() {
           builder.deploy({});
         });
       });
     });
 
-    describe('numberNode', function () {
+    describe('numberNode', function() {
       var builder = new Tree('test_numberNode');
 
       builder
@@ -274,14 +272,14 @@ describe('tree', function () {
           .end()
         .end();
 
-      it('should throw an error if the required parameter "age" is not passed', function () {
-        assert.throws(function () {
+      it('should throw an error if the required parameter "age" is not passed', function() {
+        assert.throws(function() {
           builder.deploy({});
         });
       });
     });
 
-    describe('stringNode', function () {
+    describe('stringNode', function() {
       var builder = new Tree('test_stringNode');
 
       builder
@@ -291,14 +289,14 @@ describe('tree', function () {
           .end()
         .end();
 
-      it('should throw an error if the required parameter "name" is not passed', function () {
-        assert.throws(function () {
+      it('should throw an error if the required parameter "name" is not passed', function() {
+        assert.throws(function() {
           builder.deploy({});
         });
       });
     });
 
-    describe('variableObjectNode', function () {
+    describe('variableObjectNode', function() {
       var builder = new Tree('test_variableObjectNode');
 
       builder
@@ -308,8 +306,8 @@ describe('tree', function () {
           .end()
         .end();
 
-      it('should throw an error if the required parameter "data" is not passed', function () {
-        assert.throws(function () {
+      it('should throw an error if the required parameter "data" is not passed', function() {
+        assert.throws(function() {
           builder.deploy({});
         });
       });

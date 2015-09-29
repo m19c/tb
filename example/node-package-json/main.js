@@ -1,7 +1,6 @@
-'use strict';
-
-var builder   = require('./../../index'),
-    definition, result;
+var builder = require('./../../index');
+var definition;
+var result;
 
 definition = builder('my_config');
 
@@ -21,7 +20,7 @@ definition
     .variableObjectNode('script').end()
     .stringNode('main').end()
     .objectNode('repository')
-      .validator(function (key, repository) {
+      .validator(function validRepository(key, repository) {
         return repository.url && repository.url.substr(0, 4) === 'http';
       })
       .children()

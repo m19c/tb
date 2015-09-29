@@ -6,11 +6,11 @@
 
 > Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
 
-The `config-tree-builder` allows the developer to specialize a configuration fast and without problems through an easy API.
+The `tb` (known as `tree-builder`) allows the developer to specialize a configuration fast and without problems through an easy API.
 
 ## Install
 ```bash
-npm install config-tree-builder
+npm install tb
 ```
 
 ## Example

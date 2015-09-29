@@ -1,5 +1,5 @@
 {
-  "name": "config-tree-builder",
+  "name": "tb",
   "description": "The config-tree-builder allows the developer to specialize a configuration fast and without problems through an easy API.",
   "version": "2.0.0-alpha1",
   "main": "./index.js",

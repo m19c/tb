@@ -36,7 +36,7 @@ gulp.task('codeclimate', function sendToCodeclimate() {
   return gulp
     .src(['dist/report/lcov.info'], { read: false })
     .pipe(codeclimate({
-      token: '83d1a6741b82ae334cbc797b967958cff1462691fcdb082b222087a63a6d2a5d'
+      token: 'e03fa9d97578203b90dbcf47d15aae799c64e1c21c4383ea3b7240084e48ad90'
     }))
   ;
 });

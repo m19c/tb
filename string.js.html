@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>tb Source: lib/node/string.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.flatly.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">tb</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="module-tb.html">tb</a>
+						</li>
+						
+						<li>
+							<a href="expect.html">util/expect</a>
+						</li>
+						
+						<li>
+							<a href="type.html">util/type</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="ArrayNode.html">ArrayNode</a>
+						</li>
+						
+						<li>
+							<a href="BooleanNode.html">BooleanNode</a>
+						</li>
+						
+						<li>
+							<a href="ConfigError.html">ConfigError</a>
+						</li>
+						
+						<li>
+							<a href="Context.html">Context</a>
+						</li>
+						
+						<li>
+							<a href="FunctionNode.html">FunctionNode</a>
+						</li>
+						
+						<li>
+							<a href="MixedNode.html">MixedNode</a>
+						</li>
+						
+						<li>
+							<a href="NumberNode.html">NumberNode</a>
+						</li>
+						
+						<li>
+							<a href="ObjectNode.html">ObjectNode</a>
+						</li>
+						
+						<li>
+							<a href="StringNode.html">StringNode</a>
+						</li>
+						
+						<li>
+							<a href="Tree.html">Tree</a>
+						</li>
+						
+						<li>
+							<a href="VariableObjectNode.html">VariableObjectNode</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: lib/node/string.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript linenums">var util = require('util');
+var MixedNode = require('./mixed');
+var expect = require('./../util/expect');
+var ConfigError = require('./../error');
+
+/**
+ * @constructor
+ * @augments {MixedNode}
+ * @param {string} key
+ * @param {MixedNode} parent
+ */
+function StringNode(key, parent) {
+  StringNode.super_.apply(this, [key, parent, {
+    regExpToBeTruly: null,
+    regExpToBeFalsely: null,
+    minLength: null,
+    maxLength: null
+  }]);
+
+  this.type = 'string';
+  this.allowed = ['string'];
+}
+
+util.inherits(StringNode, MixedNode);
+
+/**
+ * @param  {RegExp} regEx
+ * @return {StringNode}
+ */
+StringNode.prototype.regExpToBeTruly = function regExpToBeTruly(regEx) {
+  this.options.regExpToBeTruly = regEx;
+  return this;
+};
+
+/**
+ * @param  {RegExp} regEx
+ * @return {StringNode}
+ */
+StringNode.prototype.regExpToBeFalsely = function regExpToBeFalsely(regEx) {
+  this.options.regExpToBeFalsely = regEx;
+  return this;
+};
+
+/**
+ * @param  {number} value
+ * @return {StringNode}
+ */
+StringNode.prototype.minLength = function minLength(value) {
+  this.options.minLength = value;
+  return this;
+};
+
+/**
+ * @param  {number} value
+ * @return {StringNode}
+ */
+StringNode.prototype.maxLength = function maxLength(value) {
+  this.options.maxLength = value;
+  return this;
+};
+
+/**
+ * Validates the given `value`
+ *
+ * @param  {mixed} value
+ * @param  {string} path
+ * @return {mixed}
+ */
+StringNode.prototype.validate = function validate(value, path) {
+  var count = value.length;
+
+  if (
+    this.options.regExpToBeTruly !== null &amp;&amp;
+    expect.isRegExpTruly(value, this.options.regExpToBeTruly) === false
+  ) {
+    throw new ConfigError('Expect truly result - got false', path);
+  }
+
+  if (
+    this.options.regExpToBeFalsely !== null &amp;&amp;
+    expect.isRegExpFalsely(value, this.options.regExpToBeFalsely) === false
+  ) {
+    throw new ConfigError('Expect falsely result - got true', path);
+  }
+
+  if (
+    this.options.minLength !== null &amp;&amp;
+    expect.isLowerOrEqualThan(count, this.options.minLength) === true
+  ) {
+    throw new ConfigError(util.format('Minimum length of %d not reached', this.options.minLength), path);
+  }
+
+  if (
+    this.options.maxLength !== null &amp;&amp;
+    expect.isGreaterThan(count, this.options.maxLength) === true
+  ) {
+    throw new ConfigError(util.format('Maximum length of %d exceeded', this.options.maxLength), path);
+  }
+
+  return value;
+};
+
+module.exports = StringNode;</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		2015 MrBoolean
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
+		on Thu Oct 01 2015 16:48:12 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+
+	<script>  Sunlight.highlightAll({lineNumbers:true,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>

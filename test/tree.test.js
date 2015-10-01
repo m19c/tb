@@ -40,6 +40,73 @@ describe('tree', function() {
       }, 'Invalid example');
     });
 
+    it('throws an error if the condition of an ifValidator fails', function() {
+      assert.throws(function() {
+        var builder = new Tree('should_throw');
+
+        builder
+          .children()
+            .stringNode('example')
+              .validatorIf(
+                function condition() {
+                  throw new Error('Condition failed');
+                },
+                function validator() {}
+              )
+            .end()
+          .end()
+        ;
+
+        builder.deploy({ example: 'some' });
+      }, 'Condition failed');
+    });
+
+    it('throws an error if the ifValidator fails', function() {
+      assert.throws(function() {
+        var builder = new Tree('should_throw');
+
+        builder
+          .children()
+            .stringNode('example')
+              .validatorIf(
+                function condition() {
+                  return true;
+                },
+                function validator() {
+                  throw new Error('Invalid example');
+                }
+              )
+            .end()
+          .end()
+        ;
+
+        builder.deploy({ example: 'some' });
+      }, 'Invalid example');
+    });
+
+    it('throws an error if the ifValidator returns `false`', function() {
+      assert.throws(function() {
+        var builder = new Tree('should_throw');
+
+        builder
+          .children()
+            .stringNode('example')
+              .validatorIf(
+                function condition() {
+                  return true;
+                },
+                function validator() {
+                  return false;
+                }
+              )
+            .end()
+          .end()
+        ;
+
+        builder.deploy({ example: 'some' });
+      }, 'Validation failed');
+    });
+
     it('should forward errors', function() {
       assert.throws(function() {
         var builder = new Tree('forward_it');

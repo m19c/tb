@@ -66,9 +66,9 @@ describe('MixedNode', function() {
 
       node.validatorIf(condition, validator);
 
-      assert.lengthOf(node.options.validatorIf, 1);
-      assert.strictEqual(node.options.validatorIf[0].condition, condition);
-      assert.strictEqual(node.options.validatorIf[0].validator, validator);
+      assert.lengthOf(node.options.ifValidators, 1);
+      assert.strictEqual(node.options.ifValidators[0].condition, condition);
+      assert.strictEqual(node.options.ifValidators[0].validator, validator);
     });
   });
 });

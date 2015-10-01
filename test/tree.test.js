@@ -33,7 +33,8 @@ describe('tree', function() {
                 throw new Error('Invalid example');
               })
             .end()
-          .end();
+          .end()
+        ;
 
         builder.deploy({ example: 'test' });
       }, 'Invalid example');

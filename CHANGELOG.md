@@ -4,3 +4,4 @@
 - Beside the validation-function you can also give a 'sanitizer(callback)`. This function is exclaimed directly after the validation.
 - The `description(value)` function was added. It can be processed by the `config-tree-builder` Command Line Interface.
 - The modul `underscore` was replaced by particular `lodash` modules. As a consequence the `tb` is more slender.
+- The `validator` callback takes the `value` as the first, the `key` as the second argument.

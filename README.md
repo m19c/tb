@@ -4,9 +4,12 @@
 
 [![NPM](https://nodei.co/npm/tb.png?downloads=true)](https://nodei.co/npm/tb/)
 
-> Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
+Specify objects and its economy.
 
-The `tb` (known as `tree-builder`) allows the developer to specialize a configuration fast and without problems through an easy [API](https://github.com/MrBoolean/tb/blob/master/API.md).
+**Goal**
+`tb` gives you a bunch of functions to specify an object. You can assign booleans, functions, arrays, objects (adjustable and fully declared), numbers, strings and unknown values. Move through your object tree using chainable functions. The pipeline will never end (until you do a misstake or move out of your tree). Once your tree is ready you can pass an object to check the tree recursively for its correctness.
+
+Take a look at the `example/` folder or the API, to get an overview into `tb` and its nature.
 
 [API](https://github.com/MrBoolean/tb/blob/master/API.md) | [Changelog](https://github.com/MrBoolean/tb/blob/master/Changelog.md) | [Documentation](http://mrboolean.github.io/tb/)
 

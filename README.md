@@ -7,6 +7,7 @@
 Specify objects and its economy.
 
 **Goal**
+
 `tb` gives you a bunch of functions to specify an object. You can assign booleans, functions, arrays, objects (adjustable and fully declared), numbers, strings and unknown values. Move through your object tree using chainable functions. The pipeline will never end (until you do a misstake or move out of your tree). Once your tree is ready you can pass an object to check the tree recursively for its correctness.
 
 Take a look at the `example/` folder or the API, to get an overview into `tb` and its nature.

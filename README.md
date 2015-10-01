@@ -2,6 +2,8 @@
 ====
 [![Code Climate](https://codeclimate.com/github/MrBoolean/tb/badges/gpa.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Test Coverage](https://codeclimate.com/github/MrBoolean/tb/badges/coverage.svg)](https://codeclimate.com/github/MrBoolean/tb) [![Build Status](https://travis-ci.org/MrBoolean/tb.svg?branch=master)](https://travis-ci.org/MrBoolean/tb) [![Dependency Status](https://gemnasium.com/MrBoolean/tb.svg)](https://gemnasium.com/MrBoolean/tb) [![npm](https://img.shields.io/npm/v/tb.svg)](https://npmjs.org/tb) [![Open The Docs](https://img.shields.io/badge/open-the%20docs-1abc9c.svg)](http://mrboolean.github.io/tb/)
 
+[![NPM](https://nodei.co/npm/<package>.png)](https://nodei.co/npm/tb.png?downloads=true)
+
 > Sometimes it is necessary to specialize the configuration. Not because you're totally into strict application, but because sometimes you will allow third-party-implementations.
 
 The `tb` (known as `tree-builder`) allows the developer to specialize a configuration fast and without problems through an easy [API](https://github.com/MrBoolean/tb/blob/master/API.md).

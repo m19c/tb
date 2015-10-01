@@ -2,12 +2,12 @@
 
 var info = require('../package.json');
 var program = require('commander');
-var generate = require('../lib/command/generate');
+var doc = require('../lib/command/doc');
 
 program
   .version(info.version)
 ;
 
-generate(program);
+doc(program);
 
 program.parse(process.argv);

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css">
+    <style>
+    .mt{margin-top:30px;}
+    .mb0{margin-bottom:0;}
+    </style>
+  </head>
+  <body ng-app>
+    <div class="container">
+      <hr>
+      <a class="btn btn-default btn-xl" id="expand-all">Toggle all</a>
+      <hr>
+      {{#each data}}
+        <h2>{{@key}}</h2>
+        {{> tree}}
+      {{/each}}
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/languages/javascript.min.js"></script>
+    <script>
+    (function tree() {
+      $('pre.code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+
+      $(document).ready(function onReady() {
+        $('#expand-all').on('click', function expandAll() {
+          $('.list-group .list-group-item a[data-toggle]').trigger('click');
+        });
+
+        $('.list-group .list-group-item a[data-toggle]').on('click', function clickToggle() {
+          var $toggle  = $(this),
+              $li      = $toggle.closest('.list-group-item'),
+              $content = $li.find('[data-content="' + $toggle.data('toggle') + '"]');
+
+          $content.toggle();
+          $toggle.toggleClass('active', $content.is(':visible'));
+        });
+      });
+    })();
+    </script>
+  </body>
+</html>

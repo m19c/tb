@@ -1,0 +1,176 @@
+<ul class="list-group">
+  {{#each this}}
+    <li class="list-group-item clearfix">
+      <div class="clearfix">
+        <div class="pull-left">
+          <div class="btn-group">
+            <a class="btn btn-xs btn-default" data-toggle="info"><i class="fa fa-info"></i></a>
+            {{#if _children}}
+              <a class="btn btn-xs btn-default" data-toggle="children"><i class="fa fa-folder-open-o"></i></a>
+            {{/if}}
+          </div>
+          <code>{{@key}}</code>
+          {{#if _info.description}}
+            <p class="text-muted">{{_info.description}}</p>
+          {{/if}}
+          <div class="table-responsive" data-content="info" style="display:none;">
+            <table class="table table table-bordered table-hover">
+              <tbody>
+                {{#if _info.validate}}
+                  <tr>
+                    <td>validate</td>
+                    <td>
+                      <code>{{_info.validate}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.hasKey}}
+                  <tr>
+                    <td>hasKey</td>
+                    <td>
+                      <code>{{_info.hasKey}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.lengthOf}}
+                  <tr>
+                    <td>lengthOf</td>
+                    <td>
+                      <code>{{_info.lengthOf}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.minLength}}
+                  <tr>
+                    <td>minLength</td>
+                    <td>
+                      <code>{{_info.minLength}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.maxLength}}
+                  <tr>
+                    <td>maxLength</td>
+                    <td>
+                      <code>{{_info.maxLength}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.expectToBe}}
+                  <tr>
+                    <td>expectToBe</td>
+                    <td>
+                      <code>{{_info.expectToBe}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.validator}}
+                  <tr>
+                    <td>validator</td>
+                    <td>
+                      <pre class="code">{{_info.validator}}</pre>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.validatorIf}}
+                  <tr>
+                    <td>validatorIf</td>
+                    <td>
+                      <pre class="code">{{_info.validatorIf}}</pre>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.sanitizer}}
+                  <tr>
+                    <td>sanitizer</td>
+                    <td>
+                      <pre class="code">{{_info.sanitizer}}</pre>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.greaterThan}}
+                  <tr>
+                    <td>greaterThan</td>
+                    <td>
+                      <code>{{_info.greaterThan}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.greaterOrEqualThan}}
+                  <tr>
+                    <td>greaterOrEqualThan</td>
+                    <td>
+                      <code>{{_info.greaterOrEqualThan}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.lowerThan}}
+                  <tr>
+                    <td>lowerThan</td>
+                    <td>
+                      <code>{{_info.lowerThan}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.lowerOrEqualThan}}
+                  <tr>
+                    <td>lowerOrEqualThan</td>
+                    <td>
+                      <code>{{_info.lowerOrEqualThan}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.strictEqualTo}}
+                  <tr>
+                    <td>strictEqualTo</td>
+                    <td>
+                      <code>{{_info.strictEqualTo}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.equalTo}}
+                  <tr>
+                    <td>equalTo</td>
+                    <td>
+                      <code>{{_info.equalTo}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.regExpToBeTruly}}
+                  <tr>
+                    <td>regExpToBeTruly</td>
+                    <td>
+                      <code>{{_info.regExpToBeTruly}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+                {{#if _info.regExpToBeFalsely}}
+                  <tr>
+                    <td>regExpToBeFalsely</td>
+                    <td>
+                      <code>{{_info.regExpToBeFalsely}}</code>
+                    </td>
+                  </tr>
+                {{/if}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="btn-group pull-right">
+          <span class="btn btn-xs btn-primary">{{_info.type}}</span>
+          {{#if _info.isRequired}}
+            <span class="btn btn-xs btn-warning pull-right">required</span>
+          {{/if}}
+          {{#if _children}}
+            <span class="btn btn-xs btn-info pull-right">nested</span>
+          {{/if}}
+        </div>
+      </div>
+      {{#if _children}}
+        <div class="clearfix mt mb0" data-content="children" style="display:none;">
+          {{> tree _children}}
+        </div>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>

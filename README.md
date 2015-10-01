@@ -48,7 +48,7 @@ try {
 }
 ```
 
-## Docs generator
+## CLI
 ...
 
 ## Contribute
@@ -62,7 +62,7 @@ At bottom it is very simple.
 2. Run `npm install`.
 3. Define the content and write some test for it.
 4. Implement the new functionality.
-5. Run `grunt test`
+5. Run `gulp test`
 6. Create a pull-request
 
 ## License

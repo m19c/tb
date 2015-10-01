@@ -1,7 +1,7 @@
 {
   "name": "tb",
   "description": "The config-tree-builder allows the developer to specialize a configuration fast and without problems through an easy API.",
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "main": "./index.js",
   "bin": "./bin/tb",
   "author": "Marc Binder <marcandrebinder@gmail.com>",

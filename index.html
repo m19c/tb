@@ -59,10 +59,6 @@
 						</li>
 						
 						<li>
-							<a href="ConfigError.html">ConfigError</a>
-						</li>
-						
-						<li>
 							<a href="Context.html">Context</a>
 						</li>
 						
@@ -72,6 +68,10 @@
 						
 						<li>
 							<a href="MixedNode.html">MixedNode</a>
+						</li>
+						
+						<li>
+							<a href="module.exports.html">exports</a>
 						</li>
 						
 						<li>
@@ -138,12 +138,13 @@
 
     <section>
         <article><h1 id="-tb-"><code>tb</code></h1>
-<p><a href="https://codeclimate.com/github/MrBoolean/tb"><img src="https://codeclimate.com/github/MrBoolean/tb/badges/gpa.svg" alt="Code Climate"></a> <a href="https://codeclimate.com/github/MrBoolean/tb"><img src="https://codeclimate.com/github/MrBoolean/tb/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://travis-ci.org/MrBoolean/tb"><img src="https://travis-ci.org/MrBoolean/tb.svg?branch=master" alt="Build Status"></a> <a href="https://gemnasium.com/MrBoolean/tb"><img src="https://gemnasium.com/MrBoolean/tb.svg" alt="Dependency Status"></a> <a href="https://npmjs.org/tb"><img src="https://img.shields.io/npm/v/tb.svg" alt="npm"></a></p>
-<blockquote>
-<p>Sometimes it is necessary to specialize the configuration. Not because you&#39;re totally into strict application, but because sometimes you will allow third-party-implementations.</p>
-</blockquote>
-<p>The <code>tb</code> (known as <code>tree-builder</code>) allows the developer to specialize a configuration fast and without problems through an easy <a href="https://github.com/MrBoolean/tb/blob/master/API.md">API</a>.</p>
-<p><a href="https://github.com/MrBoolean/tb/blob/master/API.md">API</a> | <a href="https://github.com/MrBoolean/tb/blob/master/Changelog.md">Changelog</a></p>
+<p><a href="https://codeclimate.com/github/MrBoolean/tb"><img src="https://codeclimate.com/github/MrBoolean/tb/badges/gpa.svg" alt="Code Climate"></a> <a href="https://codeclimate.com/github/MrBoolean/tb"><img src="https://codeclimate.com/github/MrBoolean/tb/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://travis-ci.org/MrBoolean/tb"><img src="https://travis-ci.org/MrBoolean/tb.svg?branch=master" alt="Build Status"></a> <a href="https://gemnasium.com/MrBoolean/tb"><img src="https://gemnasium.com/MrBoolean/tb.svg" alt="Dependency Status"></a> <a href="https://npmjs.org/tb"><img src="https://img.shields.io/npm/v/tb.svg" alt="npm"></a> <a href="http://mrboolean.github.io/tb/"><img src="https://img.shields.io/badge/open-the%20docs-1abc9c.svg" alt="Open The Docs"></a></p>
+<p><a href="https://nodei.co/npm/tb/"><img src="https://nodei.co/npm/tb.png?downloads=true" alt="NPM"></a></p>
+<p>Specify objects and its economy.</p>
+<p><strong>Goal</strong>
+<code>tb</code> gives you a bunch of functions to specify an object. You can assign booleans, functions, arrays, objects (adjustable and fully declared), numbers, strings and unknown values. Move through your object tree using chainable functions. The pipeline will never end (until you do a misstake or move out of your tree). Once your tree is ready you can pass an object to check the tree recursively for its correctness.</p>
+<p>Take a look at the <code>example/</code> folder or the API, to get an overview into <code>tb</code> and its nature.</p>
+<p><a href="https://github.com/MrBoolean/tb/blob/master/API.md">API</a> | <a href="https://github.com/MrBoolean/tb/blob/master/Changelog.md">Changelog</a> | <a href="http://mrboolean.github.io/tb/">Documentation</a></p>
 <h2 id="install">Install</h2>
 <pre><code class="lang-bash">npm install tb
 </code></pre>
@@ -197,7 +198,7 @@ try {
 </ol>
 <h2 id="license">License</h2>
 <p>The MIT License (MIT)</p>
-<p>Copyright (c) 2014 - 2015 Marc Binder <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x6d;&#x61;&#114;&#x63;&#x61;&#x6e;&#100;&#x72;&#101;&#x62;&#105;&#110;&#100;&#x65;&#114;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;">&#x6d;&#x61;&#114;&#x63;&#x61;&#x6e;&#100;&#x72;&#101;&#x62;&#105;&#110;&#100;&#x65;&#114;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a></p>
+<p>Copyright (c) 2014 - 2015 Marc Binder <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#x6d;&#97;&#114;&#99;&#x61;&#110;&#x64;&#x72;&#101;&#98;&#x69;&#110;&#x64;&#x65;&#114;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#109;">&#x6d;&#97;&#114;&#99;&#x61;&#110;&#x64;&#x72;&#101;&#98;&#x69;&#110;&#x64;&#x65;&#114;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#109;</a></p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
@@ -223,7 +224,7 @@ try {
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
-		on Thu Oct 01 2015 16:48:12 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Thu Oct 01 2015 20:42:08 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

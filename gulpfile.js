@@ -4,6 +4,8 @@ var istanbul = require('gulp-istanbul');
 var eslint = require('gulp-eslint');
 var codeclimate = require('gulp-codeclimate-reporter');
 var sequence = require('gulp-sequence');
+var jsdoc = require('gulp-jsdoc');
+var ghp = require('gulp-gh-pages');
 
 gulp.task('lint', function lint() {
   return gulp
@@ -29,6 +31,34 @@ gulp.task('test', ['test.instrument'], function test() {
     .pipe(istanbul.writeReports({
       dir: './dist/report'
     }))
+  ;
+});
+
+gulp.task('doc', function doc() {
+  return gulp
+    .src(['lib/**/*.js', 'index.js', 'README.md'])
+    .pipe(jsdoc.parser({
+      name: 'tb',
+      plugins: ['plugins/markdown']
+    }))
+    .pipe(jsdoc.generator('./dist/doc', {
+      path: 'ink-docstrap',
+      systemName: 'tb',
+      footer: '',
+      copyright: '2015 MrBoolean',
+      navType: 'vertical',
+      theme: 'flatly',
+      linenums: true,
+      collapseSymbols: false,
+      inverseNav: false
+    }))
+  ;
+});
+
+gulp.task('deploy', ['doc'], function gitHubPage() {
+  return gulp
+    .src('dist/doc/tb/**/*')
+    .pipe(ghp())
   ;
 });
 

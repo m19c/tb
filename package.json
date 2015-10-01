@@ -3,7 +3,7 @@
   "description": "The config-tree-builder allows the developer to specialize a configuration fast and without problems through an easy API.",
   "version": "2.0.0-alpha1",
   "main": "./index.js",
-  "bin": "./bin/config-tree-builder.js",
+  "bin": "./bin/tb",
   "author": "Marc Binder <marcandrebinder@gmail.com>",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "dependencies": {
     "bluebird": "^2.10.1",
     "commander": "^2.8.1",
-    "jade": "^1.11.0",
+    "handlebars": "^4.0.3",
     "lodash.assign": "^3.2.0",
     "lodash.isempty": "^3.0.4",
     "lodash.isfunction": "^3.0.6",

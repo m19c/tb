@@ -1,13 +1,23 @@
 var tb = require('../../');
 var definition;
+var config;
 
-definition = tb('my_config');
+definition = tb('condition');
 
 definition
   .children()
-    .stringNode('location')
-      .when(function(value) { return value === 'Ostdeutschland'; })
-        .thenInvalid()
+    .stringNode('firstname').isRequired().end()
+    .stringNode('lastname').isRequired().end()
+    .arrayNode('customers')
+      .when(function justOne(value) { return value.length === 1; })
+        .then(function addProperty(value) {
+          value[0].golden = true;
+          return value;
+        })
+      .end()
+      .nestedObject()
+        .stringNode('firstname').isRequired().end()
+        .stringNode('lastname').isRequired().end()
       .end()
     .end()
   .end()
@@ -15,9 +25,18 @@ definition
 
 
 try {
-  definition.deploy({
-    location: 'Ostdeutschland'
+  config = definition.deploy({
+    firstname: 'Jon',
+    lastname: 'Doe',
+    customers: [
+      {
+        firstname: 'Max',
+        lastname: 'Mustermann'
+      }
+    ]
   });
+
+  console.log(config.customers[0].golden); // true
 } catch (err) {
-  console.error(err.path.join('.') + ':', err.message);
+  console.error(err.path + ':', err.message);
 }

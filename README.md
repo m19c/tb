@@ -12,6 +12,8 @@ Specify objects and its economy.
 
 Take a look at the `example/` folder or the API, to get an overview into `tb` and its nature.
 
+Inspiration: [Symfony - Defining and Processing Configuration Values](http://symfony.com/doc/current/components/config/definition.html)
+
 [API](https://github.com/MrBoolean/tb/blob/master/API.md) | [Changelog](https://github.com/MrBoolean/tb/blob/master/Changelog.md) | [Documentation](http://mrboolean.github.io/tb/)
 
 ## Install
@@ -40,11 +42,12 @@ definition
         .end()
       .end()
     .end()
-  .end();
+  .end()
+;
 
 try {
   result = definition.deploy({
-    name: 'Pentakill Package',
+    name: 'tb',
     developer: {
       name: 'Jon Doe',
       email: 'jon@doe.com'

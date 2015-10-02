@@ -3,6 +3,16 @@
   * [`isRequired()`](#isrequired)
   * [`defaultValue(value)`](#defaultvaluevalue)
   * [`validator(callback)`](#validatorcallback)
+  * [`validatorIf(condition, validator)`](#)
+  * [`sanitizer(callback)`](#)
+  * [`when(condition)`](#)
+  * [`ifTrue()`](#)
+  * [`ifString()`](#)
+  * [`ifNull()`](#)
+  * [`ifArray()`](#)
+  * [`ifNotInArray(values)`](#)
+  * [`ifInArray(values)`](#)
+  * [`always()`](#)
 * [`arrayNode(key)`](#arraynodekey)
   * [`hasKey(key)`](#haskeykey)
   * [`lengthOf(value)`](#lengthofvalue)
@@ -22,8 +32,15 @@
 * [`booleanNode(key)`](#booleannodekey)
   * [`expectToBeTrue()`](#expecttobetrue)
   * [`expectToBeFalse()`](#expecttobefalse)
-* `functionNode(key)`
-* `variableObjectNode(key)`
+* [`functionNode(key)`](#)
+* [`variableObjectNode(key)`](#)
+* Condition
+  * [`then(callback)`](#)
+  * [`thenNull()`](#)
+  * [`thenEmptyArray()`](#)
+  * [`thenEmptyObject()`](#)
+  * [`thenInvalid()`](#)
+  * [`thenDelete()`](#)
 
 ## `mixedNode(key)`
 ### `validator(callback)`
@@ -35,7 +52,41 @@ Elaborates that the defined parameter has to be occupied.
 ### `defaultValue(value)`
 Defines the default-`value`.
 
+### `validatorIf(condition, validator)`
+...
+
+### `sanitizer(callback)`
+...
+
+### `when(condition)`
+...
+
+### `ifTrue()`
+...
+
+### `ifString()`
+...
+
+### `ifNull()`
+...
+
+### `ifArray()`
+...
+
+### `ifNotInArray(values)`
+...
+
+### `ifInArray(values)`
+...
+
+### `always()`
+...
+
+**[⬆](#api)**
+
 ## `objectNode(key)`
+
+**[⬆](#api)**
 
 ## `arrayNode(key)`
 ### `hasKey(key)`
@@ -49,6 +100,8 @@ Defines the minimal length of the array.
 
 ### `maxLength(value)`
 Defines the maximal length of the array.
+
+**[⬆](#api)**
 
 ## `functionNode(key)`
 See `global`.
@@ -66,6 +119,8 @@ Defines the minimal length.
 ### `maxLength(value)`
 Defines the maximal length.
 
+**[⬆](#api)**
+
 ## `numberNode(key)`
 ### `isGreaterThan(value)`
 Expects that the merit is bigger as `value`.
@@ -82,9 +137,23 @@ Expects the merit to be smaller or equal to `value`.
 ### `isEqualTo(value)`
 Expects the merit to be equal to `value`.
 
+**[⬆](#api)**
+
 ## `booleanNode(key)`
 ### `expectToBeTrue()`
 Expects 'true`.
 
 ### `expectToBeFalse()`
 Expects `false`.
+
+**[⬆](#api)**
+
+## Condition
+### `then(callback)`
+### `thenNull()`
+### `thenEmptyArray()`
+### `thenEmptyObject()`
+### `thenInvalid()`
+### `thenDelete()`
+
+**[⬆](#api)**

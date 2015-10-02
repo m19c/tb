@@ -22,6 +22,8 @@ npm install tb
 ```
 
 ## Example
+[![Example](https://github.com/MrBoolean/tb/blob/master/example/run.gif)](https://github.com/MrBoolean/tb/blob/master/example/)
+
 ```javascript
 var builder = require('tb');
 var definition = builder('package');

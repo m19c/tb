@@ -12,9 +12,13 @@ Specify objects and its economy.
 
 Take a look at the `example/` folder or the API, to get an overview into `tb` and its nature.
 
-Inspiration: [Symfony - Defining and Processing Configuration Values](http://symfony.com/doc/current/components/config/definition.html)
+_Inspiration: [Symfony - Defining and Processing Configuration Values.](http://symfony.com/doc/current/components/config/definition.html)_
+
+---
 
 [API](https://github.com/MrBoolean/tb/blob/master/API.md) | [Changelog](https://github.com/MrBoolean/tb/blob/master/Changelog.md) | [Documentation](http://mrboolean.github.io/tb/)
+
+---
 
 ## Install
 ```bash
@@ -23,6 +27,8 @@ npm install tb
 
 ## Example
 [![Example](https://github.com/MrBoolean/tb/blob/master/example/run.gif)](https://github.com/MrBoolean/tb/blob/master/example/)
+
+_or_
 
 ```javascript
 var builder = require('tb');
@@ -77,7 +83,7 @@ It ist important to watch the given coding standards and to implement them.
 At bottom it is very simple.
 
 1. Checkout of the repository.
-2. Run `npm install`.
+2. Run `npm i`.
 3. Define the content and write some test for it.
 4. Implement the new functionality.
 5. Run `gulp test`

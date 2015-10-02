@@ -59,7 +59,13 @@ try {
 ```
 
 ## CLI
-...
+### `tb doc <sources...> -o output [-v]`
+Generates the documentation for the given configuration tb files.
+
+#### Example
+```bash
+tb example/generate-documentation/source-a.js example/generate-documentation/source-b.js -o dist/generated-documentation -v
+```
 
 ## Contribute
 You want to help us? Cool, thanks!

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>tb Source: lib/util/type.js</title>
+	<title>tb Source: lib/condition.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -123,32 +123,77 @@
 					
 
 
-		<h1 class="page-title">Source: lib/util/type.js</h1>
+		<h1 class="page-title">Source: lib/condition.js</h1>
     
     <section>
         <article>
-            <pre class="sunlight-highlight-javascript linenums">var map = {};
-var known = ['Boolean', 'Number', 'String', 'Function', 'Array', 'Date', 'RegExp', 'Object', 'Error'];
-var index;
-var className;
+            <pre class="sunlight-highlight-javascript linenums">var merge = require('lodash.merge');
+var isFunction = require('lodash.isfunction');
 
-for (index = 0; index &lt; known.length; index++) {
-  className = known[index];
-  map['[object ' + className + ']'] = className.toLowerCase();
+function toEmptyArray() {
+  return [];
+}
+
+function toEmptyObject() {
+  return {};
+}
+
+function toNull() {
+  return null;
 }
 
 /**
- * @module util/type
- * @param  {mixed} value
- * @return {string}
+ * @constructor
+ * @param {object} options
+ * @param {MixedNode} affectedNode
  */
-module.exports = function type(value) {
-  if (value === null) {
-    return 'null';
+function Condition(options, affectedNode) {
+  this.options = merge({
+    condition: null,
+    then: null
+  }, options || {});
+
+  this.affectedNode = affectedNode;
+}
+
+Condition.prototype.then = function then(callback) {
+  if (!isFunction(callback)) {
+    throw new Error('The passed `callback` (first argument) is not a function');
   }
 
-  return map[map.toString.call(value)];
-};</pre>
+  this.options.then = callback;
+  return this;
+};
+
+Condition.prototype.thenNull = function thenNull() {
+  return this.then(toNull);
+};
+
+Condition.prototype.thenEmptyArray = function thenEmptyArray() {
+  return this.then(toEmptyArray);
+};
+
+Condition.prototype.thenEmptyObject = function thenEmptyObject() {
+  return this.then(toEmptyObject);
+};
+
+Condition.prototype.thenInvalid = function thenInvalid() {
+  return this.then(function invalid(value, key, executor) {
+    executor.invalid();
+  });
+};
+
+Condition.prototype.thenDelete = function thenDelete() {
+  return this.then(function del(value, key, executor) {
+    executor.delete();
+  });
+};
+
+Condition.prototype.end = function end() {
+  return this.affectedNode;
+};
+
+module.exports = Condition;</pre>
         </article>
     </section>
 

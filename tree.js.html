@@ -33,6 +33,14 @@
 						</li>
 						
 						<li>
+							<a href="validate.html">tree/validate</a>
+						</li>
+						
+						<li>
+							<a href="walk-through.html">tree/walk-through</a>
+						</li>
+						
+						<li>
 							<a href="expect.html">util/expect</a>
 						</li>
 						
@@ -56,6 +64,10 @@
 						
 						<li>
 							<a href="BooleanNode.html">BooleanNode</a>
+						</li>
+						
+						<li>
+							<a href="Condition.html">Condition</a>
 						</li>
 						
 						<li>
@@ -116,12 +128,8 @@
     <section>
         <article>
             <pre class="sunlight-highlight-javascript linenums">var util = require('util');
-var typeOf = require('./util/type');
+var walkThrough = require('./tree/walk-through');
 var ObjectNode = require('./node/object');
-var ConfigError = require('./error');
-var isObject = require('lodash.isobject');
-var isEmpty = require('lodash.isempty');
-var union = require('lodash.union');
 
 /**
  * @constructor
@@ -139,162 +147,7 @@ util.inherits(Tree, ObjectNode);
  * @return {object}
  */
 Tree.prototype.deploy = function deploy(data) {
-  function validate(child, key, value, path) {
-    var type = typeOf(value);
-    var index;
-    var item;
-    var isValid;
-
-    if (child.options.validators !== null) {
-      for (index = 0; index &lt; child.options.validators.length; index++) {
-        if (!child.options.validators[index]) {
-          continue;
-        }
-
-        item = child.options.validators[index];
-
-        try {
-          isValid = item(value, key);
-
-          if (!isValid) {
-            throw new ConfigError('Validation failed', path);
-          }
-        } catch (validationError) {
-          throw new ConfigError(validationError.message, path.join('.'));
-        }
-      }
-    }
-
-    if (child.options.ifValidators !== null) {
-      for (index = 0; index &lt; child.options.ifValidators.length; index++) {
-        if (!child.options.ifValidators[index]) {
-          continue;
-        }
-
-        item = child.options.ifValidators[index];
-
-        try {
-          isValid = true;
-
-          if (item.condition(value, key)) {
-            isValid = item.validator(value, key);
-          }
-
-          if (!isValid) {
-            throw new ConfigError('Validation failed', path);
-          }
-        } catch (validationError) {
-          throw new ConfigError(validationError.message, path.join('.'));
-        }
-      }
-    }
-
-    if (child.options.isRequired &amp;&amp; child.allowed.indexOf(type) === -1) {
-      throw new ConfigError(util.format(
-        'Invalid type "%s" obtained - expect "%s"', type, child.type
-      ), path.join('.'));
-    }
-
-    if (child.validate &amp;&amp; value) {
-      child.validate(value, path.join('.'));
-    }
-
-    if (child.options.sanitizer) {
-      try {
-        value = child.options.sanitizer(value);
-      } catch (sanitizeError) {
-        throw new ConfigError(sanitizeError.message, path);
-      }
-    }
-
-    return value;
-  }
-
-  function pass(spec, config, path, checkDifference) {
-    var result = {};
-    var few = [];
-    var key;
-    var isDefined;
-    var child;
-    var value;
-    var loopPath;
-    var error;
-
-    checkDifference = (typeof checkDifference === 'undefined') ? true : checkDifference;
-
-    if (checkDifference &amp;&amp; isObject(config)) {
-      few = Object.keys(config);
-    }
-
-    if (Array.isArray(config)) {
-      result = [];
-
-      for (key = 0; key &lt; config.length; key++) {
-        loopPath = path.slice(0);
-        loopPath.push(key);
-
-        result[key] = pass(spec, config[key], loopPath);
-      }
-
-      return result;
-    }
-
-    for (key in spec.data) {
-      if (!spec.data[key]) {
-        continue;
-      }
-
-      child = spec.data[key];
-      isDefined = config &amp;&amp; config.hasOwnProperty(key);
-      value = isDefined ? config[key] : undefined;
-      loopPath = path.slice(0);
-
-      loopPath.push(key);
-
-      if (!isDefined &amp;&amp; child.options.isRequired) {
-        throw new ConfigError(util.format(
-          'Undefined configuration "%s"', loopPath.join('.')
-        ), loopPath.join('.'));
-      }
-
-      if (few.indexOf(key) > -1) {
-        few.splice(few.indexOf(key), 1);
-      }
-
-      if (child.context) {
-        if (child.type === 'object') {
-          try {
-            result[key] = pass(
-              child.context,
-              validate(child, key, value, loopPath),
-              loopPath
-            );
-          } catch (possibleFewError) {
-            if (!possibleFewError.few) {
-              throw possibleFewError;
-            }
-
-            few = union(possibleFewError.few, few);
-          }
-        } else if (child.type === 'array' &amp;&amp; !isEmpty(child.context.data)) {
-          result[key] = pass(child.context, value, loopPath, false);
-        }
-      }
-
-      result[key] = validate(child, key, value, loopPath);
-    }
-
-    if (few.length > 0) {
-      error = new ConfigError(util.format('Too few keys - %s', few.join(', ')), path.join('.'));
-      error.few = few;
-
-      throw error;
-    }
-
-    return result;
-  }
-
-  return pass(this.context, data, [this.key]);
+  return walkThrough(this.context, data, [this.key]);
 };
 
 module.exports = Tree;</pre>
@@ -318,7 +171,7 @@ module.exports = Tree;</pre>
 					
 		<span class="jsdoc-message">
 		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
-		on Thu Oct 01 2015 20:43:44 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		on Fri Oct 02 2015 16:00:47 GMT+0200 (CEST) using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>
 			</div>

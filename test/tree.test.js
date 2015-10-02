@@ -2,7 +2,7 @@ var chai = require('chai');
 var assert = chai.assert;
 var Tree = require('./../lib/tree');
 
-describe('tree', function() {
+describe('Tree', function() {
   describe('validate', function() {
     it('should throw an error if the obtained validator returns false', function() {
       assert.throws(function() {

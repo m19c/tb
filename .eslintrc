@@ -6,7 +6,7 @@
   "globals": {
     "describe": true,
     "it": true,
-    "angular": true
+    "beforeEach": true
   },
   "rules": {
     "no-var": 0,

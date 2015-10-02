@@ -1,6 +1,7 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Tree = require('./../lib/tree');
+var Tree = require('../lib/tree');
+var Condition = require('../lib/condition');
 
 describe('Tree', function() {
   describe('validate', function() {
@@ -411,6 +412,170 @@ describe('Tree', function() {
         assert.throws(function() {
           builder.deploy({});
         });
+      });
+    });
+  });
+
+  describe('conditions', function() {
+    var builder;
+
+    beforeEach(function() {
+      builder = new Tree('condition_tree');
+    });
+
+    it('`when`, `ifTrue`, `ifString`, `ifNull`, `ifArray`, `ifNotInArray`, `ifInArray` and `always` returns a instance of `Condition`', function() {
+      assert.instanceOf(builder.children().mixedNode('when').when(function() {}), Condition);
+      assert.instanceOf(builder.children().mixedNode('ifTrue').ifTrue(), Condition);
+      assert.instanceOf(builder.children().mixedNode('ifString').ifString(), Condition);
+      assert.instanceOf(builder.children().mixedNode('ifNull').ifNull(), Condition);
+      assert.instanceOf(builder.children().mixedNode('ifArray').ifArray(), Condition);
+      assert.instanceOf(builder.children().mixedNode('ifNotInArray').ifNotInArray(), Condition);
+      assert.instanceOf(builder.children().mixedNode('ifInArray').ifInArray(), Condition);
+      assert.instanceOf(builder.children().mixedNode('always').always(), Condition);
+    });
+
+    describe('when', function() {
+      it('adds the correct condition behavior', function() {
+        function behavior() {}
+        builder.children().mixedNode('test').when(behavior);
+        assert.deepPropertyVal(builder, 'context.data.test.options.conditions[0].options.condition', behavior);
+      });
+    });
+
+    describe('ifTrue', function() {
+      it('adds the correct condition behavior', function() {
+        var behavior;
+
+        builder.children().mixedNode('test').ifTrue();
+        assert.deepProperty(builder, 'context.data.test.options.conditions[0].options.condition');
+
+        behavior = builder.context.data.test.options.conditions[0].options.condition;
+        assert.isFunction(behavior);
+        assert.isTrue(behavior(true));
+        assert.isFalse(behavior(false));
+      });
+    });
+
+    describe('ifString', function() {
+      it('adds the correct condition behavior', function() {
+        var behavior;
+
+        builder.children().mixedNode('test').ifString();
+        assert.deepProperty(builder, 'context.data.test.options.conditions[0].options.condition');
+
+        behavior = builder.context.data.test.options.conditions[0].options.condition;
+        assert.isFunction(behavior);
+        assert.isTrue(behavior('some'));
+        assert.isFalse(behavior(1337));
+      });
+    });
+
+    describe('ifNull', function() {
+      it('adds the correct condition behavior', function() {
+        var behavior;
+
+        builder.children().mixedNode('test').ifNull();
+        assert.deepProperty(builder, 'context.data.test.options.conditions[0].options.condition');
+
+        behavior = builder.context.data.test.options.conditions[0].options.condition;
+        assert.isFunction(behavior);
+        assert.isTrue(behavior(null));
+        assert.isFalse(behavior(1337));
+      });
+    });
+
+    describe('ifArray', function() {
+      it('adds the correct condition behavior', function() {
+        var behavior;
+
+        builder.children().mixedNode('test').ifArray();
+        assert.deepProperty(builder, 'context.data.test.options.conditions[0].options.condition');
+
+        behavior = builder.context.data.test.options.conditions[0].options.condition;
+        assert.isFunction(behavior);
+        assert.isTrue(behavior([]));
+        assert.isFalse(behavior(1337));
+      });
+    });
+
+    describe('ifNotInArray', function() {
+      it('adds the correct condition behavior', function() {
+        var behavior;
+
+        builder.children().mixedNode('test').ifNotInArray([1]);
+        assert.deepProperty(builder, 'context.data.test.options.conditions[0].options.condition');
+
+        behavior = builder.context.data.test.options.conditions[0].options.condition;
+        assert.isFunction(behavior);
+        assert.isTrue(behavior([2]));
+        assert.isFalse(behavior([1]));
+      });
+    });
+
+    describe('ifInArray', function() {
+      it('adds the correct condition behavior', function() {
+        var behavior;
+
+        builder.children().mixedNode('test').ifInArray([1]);
+        assert.deepProperty(builder, 'context.data.test.options.conditions[0].options.condition');
+
+        behavior = builder.context.data.test.options.conditions[0].options.condition;
+        assert.isFunction(behavior);
+        assert.isTrue(behavior([1]));
+        assert.isFalse(behavior([2]));
+      });
+    });
+
+    describe('always', function() {
+      it('is called "always"', function() {
+        var behavior;
+
+        builder.children().mixedNode('test').always();
+        assert.deepProperty(builder, 'context.data.test.options.conditions[0].options.condition');
+
+        behavior = builder.context.data.test.options.conditions[0].options.condition;
+        assert.isFunction(behavior);
+        assert.isTrue(behavior([]));
+        assert.isTrue(behavior(1337));
+      });
+
+      it('calls `then(callback)`', function() {
+        builder.children().mixedNode('name').always().then(function() {
+          return 1;
+        });
+
+        assert.deepEqual(builder.deploy({ name: 'Jon' }), { name: 1 });
+      });
+
+      it('calls `thenNull()`', function() {
+        builder.children().mixedNode('name').always().thenNull();
+
+        assert.deepEqual(builder.deploy({ name: 'Jon' }), { name: null });
+      });
+
+      it('calls `thenEmptyArray()`', function() {
+        builder.children().mixedNode('name').always().thenEmptyArray();
+
+        assert.deepEqual(builder.deploy({ name: 'Jon' }), { name: [] });
+      });
+
+      it('calls `thenEmptyObject()`', function() {
+        builder.children().mixedNode('name').always().thenEmptyObject();
+
+        assert.deepEqual(builder.deploy({ name: 'Jon' }), { name: {} });
+      });
+
+      it('calls `thenInvalid()`', function() {
+        assert.throws(function() {
+          builder.children().mixedNode('name').always().thenInvalid();
+          builder.deploy({ name: 'Jon' });
+        }, 'Marked as invalid');
+      });
+
+      it('calls `thenDelete()`', function() {
+        builder.children().mixedNode('name').always().thenDelete();
+
+        assert.deepEqual(builder.deploy({ name: 'Jon' }), {});
       });
     });
   });
